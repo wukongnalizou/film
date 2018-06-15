@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/contact/contact",
+    "pages/type/type",
+    "pages/typemore/typemore",
+    "pages/detail/detail",
+    "pages/feedback/feedback"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#200424",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "light",
+    "backgroundColor": "#200424"
+  },
+  "tabBar": {
+    "color": "#fff",
+    "selectedColor": "#FFD400",
+    "backgroundColor": "#1D0831",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "img/index.png",
+        "selectedIconPath": "img/index_action.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "iconPath": "img/contact.png",
+        "selectedIconPath": "img/contact_action.png",
+        "text": "联系我们"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

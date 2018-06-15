@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "首页",
+    "usingComponents": {
+      "dialog": "../../components/dialog/dialog",
+      "alert": "../../components/alert/alert",
+      "concern": "../../components/concern/concern",
+      "score": "../../components/score/score"
+  }
+}

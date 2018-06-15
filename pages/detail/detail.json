@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "dialog" : "../../components/dialog/dialog",
+    "alert": "../../components/alert/alert"
+  }
+}
