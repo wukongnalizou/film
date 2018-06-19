@@ -1,0 +1,4 @@
+<view>
+  <canvas canvas-id="myCanvas" style='width:100vw;height:100vh'></canvas>
+  <!-- <view bindtap='tap' style="position:absolute;z-index:200" class="bordertop"></view> -->
+</view>

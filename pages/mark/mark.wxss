@@ -1,0 +1,84 @@
+ .btngroup{
+  position: absolute;
+  left: 225rpx;
+  width: 300rpx;
+  height: 220rpx;
+  background: #fff; 
+  bottom: 130rpx;
+} 
+.sharetwxt{
+  /* position: absolute; */
+  width: 250rpx;
+  height: 71rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  line-height: 71rpx;
+  text-align: center;
+  border-radius: 14rpx;
+  font-size: 30rpx;
+  /* left: 25rpx;
+  bottom: 250rpx; */
+  font-weight: 500;
+  background: #FFD400;
+}
+.playagain{
+  /* position: absolute; */
+  width: 250rpx;
+  height: 71rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  line-height: 71rpx;
+  text-align: center;
+  border-radius: 14rpx;
+  font-size: 30rpx;
+  left: 250rpx;
+  bottom: 130rpx;
+  font-weight: 500;
+  background: #D6D3D1;
+}
+.sharemore{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.modal{
+  width: 750rpx;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:rgba(0, 0, 0, 0.6); 
+}
+.sharebox{
+  /* position: absolute;
+  bottom: 0;
+  left: 0; */
+  display: flex;
+  width: 750rpx;
+  height: 250rpx;
+  background: #fff;
+}
+.item{
+  flex: 1;
+  text-align: center;
+}
+.img{
+  display: inline-block;
+  margin-top: 60rpx;
+  width: 90rpx;
+  height: 90rpx;
+}
+.name{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+.cancel{
+  width: 750rpx;
+  height: 98rpx;
+  background: #e9e9e9;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  color: #999;
+  text-align: center;
+}

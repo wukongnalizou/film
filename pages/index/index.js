@@ -45,6 +45,9 @@ Page({
     this.setData({
       mate: true
     })
+    // wx.navigateTo({
+    //   url: '../mark/mark',
+    // })
   },
   closemate: function(){
     this.setData({

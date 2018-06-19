@@ -5,7 +5,9 @@
     "pages/type/type",
     "pages/typemore/typemore",
     "pages/detail/detail",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/fit/fit",
+    "pages/mark/mark"
   ],
   "window": {
     "backgroundTextStyle": "light",
