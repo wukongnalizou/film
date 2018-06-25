@@ -1,17 +1,24 @@
 <view class="detailbox">
+  <image class='bgimg' src='{{video.pic}}'></image>
   <view class='detail'>
-    <view class='title'>狙击真名 玩会爱情</view>
-    <view class='moneynum' wx:if="{{!free}}">(￥32)</view>
-    <view class='intro'>托尼·史塔克出生在纽约一个富豪家庭，从小衣来伸手饭来张口的他，并未像所有的纨绔子弟那般只知道享乐胡闹。天生聪慧的史塔克却是个出奇的天才。</view>
+    <view class='title'>{{video.name}}</view>
+    <view class='scorebox'>
+      <view class='stars'>
+        <image src='../../img/{{item}}.png' data-num="{{index}}"  wx:for="{{stars}}" wx:key="{{key}}"></image>
+      </view>
+      <view class='score'>{{video.score}}</view>
+    </view>
+    <!-- <view class='moneynum' wx:if="{{!free}}">(￥32)</view> -->
+    <view class='intro'>{{video.desc}}</view>
     <block wx:if="{{free}}">
       <view class='lockbox'>
         <view class='lockimg'>
-          <image src='../../img/blacklock.png'></image>
+          <image src='../../img/blackstart.png'></image>
         </view>
-        <view class='locktext' bindtap='play'>立即解锁</view>
+        <view class='locktext' bindtap='play'>播放</view>
       </view>
     </block>
-    <block wx:else>
+    <!-- <block wx:else>
       <view class='lockbox'>
         <view class='lockimg'>
           <image src='../../img/money.png'></image>
@@ -19,24 +26,43 @@
         <view class='locktext'>立即购买</view>
         <view class='freeplay'>免费试玩</view>
       </view>
-    </block>
+    </block> -->
     <view class='publicbox'>
       <view class='public'>
         <image src='../../img/logo.jpg'></image>
       </view>
     </view>
-  </view>
-  <block wx:if="{{dialog}}">
-    <dialog bindcloseshare="closeshare"></dialog>
-  </block>
-  <block wx:if="{{alertdialog}}">
-    <alert alertbtn="{{alertbtn}}" bindclosealert = "closealert" bindalertbtn = "alertbtn">
-      <view class='alertcon'>
-        <view class='alertp'>分享给<text>3个</text>不同的好友或群</view>
-        <view class=' alertp alertnum'>(2/3)</view>
+    <!-- <view class='discussbox' bindtap='showdiscuss'>
+      <view class='discussimg'>
+        <image src='../../img/disscuss.png'></image>
       </view>
-    </alert>
-  </block>
+      <view class='discussnum'>230</view>
+    </view> -->
+  </view>
+  <!-- <block wx:if="{{dialog}}">
+    <dialog bindcloseshare="closeshare"></dialog>
+  </block> -->
+   <block wx:if="{{alertdialog}}">
+    <!-- <alert alertbtn="{{alertbtn}}" bindclosealert = "closealert" bindalertbtn = "alertbtn">
+      <view class='alertcon'>
+        <view class='alertp'>分享给好友解锁</view>
+         <view class=' alertp alertnum'>(2/3)</view> 
+      </view>
+    </alert> -->
+    <view class="dialogbox">
+      <view class='dialog'>
+        <image src='../../img/freeing.png'></image>
+        <view class='close' bindtap='closealert'>
+          <image src='../../img/close.png'></image>
+        </view>
+        <view class='alertcon'>
+          <view class='alertp'>分享给好友解锁</view>
+        </view>
+        <view class='btn' bindtap='clickbtn'>{{alertbtn}}</view>
+        <button class='dialogsharebtn' open-type='share'></button>
+      </view>
+    </view>
+  </block> 
   <block wx:if="{{cardstate}}">
     <view class='cardbox'>
       <view class='cardback'>
@@ -48,4 +74,9 @@
       <view class='cardbtn' bindtap='unlock'>解锁成功 点击继续</view>
     </view>
   </block>
+   <view class='{{video.comment.length == 0 ? "nodis" : "disbox"}}'> 
+  <!-- <scroll-view class='disbox'> -->
+    <discuss disdata="{{video.comment}}" gameid="{{video.game_id}}" times="{{video.times}}"></discuss>
+  <!-- </scroll-view> -->
+   </view> 
 </view>

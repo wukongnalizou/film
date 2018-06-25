@@ -1,15 +1,57 @@
 // pages/detail/detail.js
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     dialog:false,
-    alertdialog:false,
+    alertdialog:false, //分享
     cardstate:false,
     alertbtn:"找朋友",
-    free : true
+    free : true,
+    discuss:false,
+    distext:true,
+    clearsharelock:0,
+    stars: [
+      "lstargray",
+      "lstargray",
+      "lstargray",
+      "lstargray",
+      "lstargray",
+    ],
+    video:{},
+    starnum:3,
+    disdata:[]
+  },
+  onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: options.name,
+    })
+    app.https('/gamevideoinfo/clickgamevideo',{
+      game_id : options.id,
+      openid: app.globalData.openid
+    },res => {
+      if(res.status == 2000){
+        res.data.pic = app.urlimg(res.data.pic);
+        this.setData({
+          video: res.data,
+          clearsharelock: res.data.clearsharelock
+        })
+      }
+    })
+  },
+  selestar: function () {
+    let stars = [
+      "lstargray",
+      "lstargray",
+      "lstargray",
+      "lstargray",
+      "lstargray",
+    ]
+    for (let i = 0; i <= this.data.starnum-1; i++) {
+      stars[i] = "lstaryellow"
+    }
+    this.setData({
+      stars: stars
+    })
   },
   closeshare:function(){
     this.setData({
@@ -17,9 +59,15 @@ Page({
     })
   },
   play:function(){
-    this.setData({
-      cardstate: true
-    })
+    if (this.data.clearsharelock){
+      this.setData({
+        cardstate: true
+      })
+    }else{
+      this.setData({
+        alertdialog: true
+      })
+    }
   },
   closealert:function(){
     this.setData({
@@ -30,49 +78,25 @@ Page({
     this.setData({
       cardstate: false
     })
+    wx.navigateTo({
+      url: '../assess/assess?id=' + this.data.video.game_id + '&name=' + this.data.video.name,
+    })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  showdiscuss: function () {
+    this.setData({
+      discuss: true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  closediscuss:function(){
+    this.setData({
+      discuss: false
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  write:function(){
+    this.setData({
+      distext: true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -84,6 +108,25 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+      title: app.globalData.setting.wx_share ,
+      path: '/pages/index/index?user=' + app.globalData.openid,
+      imageUrl: app.urlimg(app.globalData.setting.wx_sharepic),
+      success: res => {
+        if (res.errMsg == 'shareAppMessage:ok') {
+          app.https('/gamevideoinfo/sharegamevideo', {
+            game_id: this.data.video.game_id,
+            openid: app.globalData.openid
+          }, res => {
+            if (res.status == 2000) {
+              this.setData({
+                alertdialog: false,
+                cardstate: true
+              })
+            }
+          })
+        }
+      }
+    }
   }
 })

@@ -7,7 +7,15 @@
     "pages/detail/detail",
     "pages/feedback/feedback",
     "pages/fit/fit",
-    "pages/mark/mark"
+    "pages/mark/mark",
+    "pages/my/my",
+    "pages/buy/buy",
+    "pages/subscribe/subscribe",
+    "pages/assess/assess",
+    "pages/writedis/writedis",
+    "pages/alldis/alldis",
+    "components/discuss/discuss",
+    "components/distext/distext"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,10 +36,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/contact/contact",
-        "iconPath": "img/contact.png",
-        "selectedIconPath": "img/contact_action.png",
-        "text": "联系我们"
+        "pagePath": "pages/my/my",
+        "iconPath": "img/my.png",
+        "selectedIconPath": "img/my_action.png",
+        "text": "我的"
       }
     ]
   },

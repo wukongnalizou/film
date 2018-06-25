@@ -2,8 +2,15 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: url('http://video.cdn.edisonluorui.com/filmimgs/banner1.png');
+  /* background: url('http://video.cdn.edisonluorui.com/filmimgs/banner1.png'); */
   background-size: 100% 100%;
+}
+.bgimg{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+  z-index: -1;
 }
 .detail{
   width: 100%;
@@ -19,6 +26,23 @@
   color: #fff;
   font-weight: 700;
 }
+.scorebox{
+  width: 670rpx;
+  margin: 0 auto;
+}
+.stars{
+  display: inline-block;
+}
+.stars image{
+  width: 24rpx;
+  height: 23rpx;
+}
+.score{
+  display: inline-block;
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
 .moneynum{
   width: 670rpx;
   margin: 0 auto;
@@ -30,34 +54,34 @@
 .intro{
   width: 670rpx;
   margin: 0 auto;
-  margin-top: 95rpx;
+  margin-top: 50rpx;
   font-size: 24rpx;
   color: #fff;
 }
 .lockbox{
   position: absolute;
-  top: 770rpx;
+  top: 600rpx;
   left: 30rpx;
   font-size: 0;
 }
 .lockimg{
   display: inline-block;
-  width: 109rpx;
-  height: 109rpx;
-  line-height: 109rpx;
+  width: 65rpx;
+  height: 65rpx;
+  line-height: 65rpx;
   text-align: center;
   background: #fff;
   border-radius: 50%;
 }
 .lockimg image{
   display: inline-block;
-  width: 47rpx;
-  height: 54rpx;
-  transform: translateY(27.5rpx);
+  width: 23rpx;
+  height: 32rpx;
+   transform: translateY(16.5rpx); 
 }
 .locktext{
   display: inline-block;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   font-size:30rpx;
   font-weight: 500;
   transform: translateY(10rpx);
@@ -83,15 +107,35 @@
   background: #fff;
 }
 .publicbox{
-  position: absolute;
+  position: fixed;
   right: 72rpx;
   bottom: 88rpx;
   width: 96rpx;
   height: 96rpx;
   text-align: center;
   font-size: 0;
+  z-index: 9;
   background: linear-gradient(#3a21c7, #ac4ba1);
   border-radius: 50%;
+}
+.discussbox{
+  position: absolute;
+  right: 200rpx;
+  bottom: 88rpx;
+  text-align: center;
+}
+.discussimg{
+  width: 59rpx;
+  height: 59rpx;
+}
+.discussimg image{
+  width: 100%;
+  height: 100%;
+}
+.discussnum{
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #fff;
 }
 .public{
   display: inline-block;
@@ -119,11 +163,12 @@
 .alertp{
   width: 415rpx;
   text-align: center;
-  font-size: 34rpx;
+  font-size: 48rpx;
   line-height: 58rpx;
   color: #2e2e2e;
-  font-weight: 700;
-  border-bottom: 2rpx #d1d1d1 dotted;
+  font-weight: 500;
+  transform: translateY(40rpx);
+  /* border-bottom: 2rpx #d1d1d1 dotted; */
 }
 .alertp text{
   color: #ff5555;
@@ -141,6 +186,7 @@
   font-size: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 99;
   background: rgba(0, 0, 0, 0.7);
 }
 .cardback{
@@ -180,4 +226,84 @@
   border-radius: 36rpx;
   font-size: 30rpx;
   color: #000;
+}
+ .disbox{
+  position: absolute;
+  width: 100%;
+  /* height:600rpx;  */
+  /* bottom: 0; */
+  top: 900rpx;
+  left: 0;
+  background: #fff;
+} 
+.nodis{
+  position: absolute;
+  width: 100%;
+  /* height:600rpx;  */
+  bottom: 0; 
+  /* top: 900rpx; */
+  left: 0;
+  background: #fff;
+}
+.dialogbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+.dialog{
+  position: relative;
+  width: 617rpx;
+  height: 460rpx;
+  margin: 0 auto;
+  margin-top: 330rpx;
+}
+.dialog image{
+  width: 100%;
+  height: 100%;
+}
+.close{
+  position: absolute;
+  right: 50rpx;
+  top: 55rpx;
+  width: 31rpx;
+  height: 31rpx;
+  padding: 5rpx;
+}
+.close image{
+  width: 100%;
+  height: 100%;
+}
+.content{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 200rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2e2e2e;
+}
+.btn{
+  position: absolute;
+  bottom: 28rpx;
+  left: 181rpx;
+  width: 254rpx;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  background: #ff5555;
+  font-size: 36rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.dialogsharebtn{
+  position: absolute;
+  bottom: 28rpx;
+  left: 181rpx;
+  width: 254rpx;
+  height: 65rpx;
+  background: transparent;
 }

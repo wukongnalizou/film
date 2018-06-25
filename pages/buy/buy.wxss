@@ -1,4 +1,4 @@
-scroll-view{
+.buybox{
   width: 100vw;
   height: 100vh;
   background-image: url('http://video.cdn.edisonluorui.com/filmimgs/index_back.jpg');
@@ -9,10 +9,16 @@ scroll-view{
    box-sizing: border-box;
    overflow: hidden;
 }
+.detail{
+  display: inline-block;
+  font-size: 24rpx;
+  color: #bcbcbc;
+}
 .switchbox{
   position: relative;
+  display: inline-block;
   margin-top: 20rpx;
-  margin-left: 600rpx;
+   margin-left: 300rpx; 
   width: 88rpx;
   height: 38rpx;
   font-size: 0;
@@ -91,12 +97,10 @@ scroll-view{
 .imgbox{
   width: 342rpx;
   height: 453rpx;
-  border-radius: 5rpx;
 }
 .imgbox image{
   width: 100%;
   height: 100%;
-  border-radius: 5rpx;
 }
 .iconbox{
   position: absolute;
@@ -148,4 +152,28 @@ scroll-view{
   top: 38rpx;
   right: 22rpx;
   color: #fd5454;
+}
+.nodatabox{
+  position: absolute;
+  top: 246rpx;
+  width: 750rpx;
+  text-align: center;
+  /* left: 175rpx; */
+}
+.nodataimg{
+  /* position: absolute; */
+  /* top: 246rpx;
+  left: 175rpx; */
+  display: inline-block;
+  width: 400rpx;
+  height: 400rpx;
+}
+.nodataimg image{
+  width: 100%;
+  height: 100%;
+}
+.nodatatitle{
+  margin-top: 80rpx;
+  font-size: 32rpx;
+  color: #fff8d4;
 }

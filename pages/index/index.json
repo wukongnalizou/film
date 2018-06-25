@@ -4,6 +4,7 @@
       "dialog": "../../components/dialog/dialog",
       "alert": "../../components/alert/alert",
       "concern": "../../components/concern/concern",
-      "score": "../../components/score/score"
+      "score": "../../components/score/score",
+      "discuss": "../../components/discuss/discuss"
   }
 }

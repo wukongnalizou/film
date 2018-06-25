@@ -1,0 +1,274 @@
+/* pages/canvasedit/canvasedit.wxss */
+canvas{
+  position: absolute;
+  left: -750rpx;  
+  top: 0; 
+  /* margin-left: -750rpx; */
+  bottom: 0;
+  width: 750rpx;
+  height: auto;
+}
+.detailbox{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+}
+.detail{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.7);
+}
+.bacurl{
+   position: absolute;
+   left: 0rpx; 
+  right:0rpx;
+  top: 0;
+  bottom: 0;
+  width: 750rpx;
+  height: auto;
+  z-index: -1;
+}
+.surebtn{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 500rpx;
+  line-height: 500rpx;
+}
+.sharebtn{
+  position: absolute;
+  top: 756rpx;
+  left: 30rpx; 
+  right: 0;
+  height: 50rpx;
+  color: #fff;
+  font-size: 22rpx;
+  
+}
+.alertbtn{
+  width: 109rpx;
+  height: 109rpx;
+  border-radius: 100%;
+  float: left;
+  line-height: 109rpx;
+  margin-right: 24rpx;
+}
+.motelbtn{
+  position: absolute;
+  left: 30rpx;
+  top: 832rpx;
+  line-height: 109rpx;
+  height: 109rpx;
+  overflow: hidden;
+}
+.motelbtn .lineview{
+  float: left;
+  font-size: 30rpx;
+  line-height: 109rpx;
+  color: #fff;
+  margin-right: 28rpx;
+} 
+.infobtn{
+  position: absolute;
+  left: 489rpx;
+  top: 1017rpx;
+  color: #fff;
+  text-align: center;
+}
+.infobtn cover-image{
+    width: 59rpx;
+    height: 54rpx;
+
+}
+.infobtn cover-view{
+  font-size: 22rpx;
+  color: #fff;
+  line-height: 44rpx;
+}
+
+.pagename{
+  color: #fff;
+  font-size: 72rpx;
+  margin-left: 60rpx;
+  margin-top: 110rpx;
+}
+.smallname{
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.smallfontsize{
+  font-size: 24rpx;
+}
+.score{
+  font-size: 150rpx;
+  margin-left: 60rpx;
+  color: #FFD508;
+}
+.score text{
+  line-height: 112rpx;
+  height: 112rpx;
+}
+.scorepage{
+  font-size: 34rpx;
+  color: #fff;
+}
+.analyse{
+  margin-top: 30rpx;
+}
+.analyse text{
+  display: block;
+  padding: 0 60rpx;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+.analyse .analysename{
+  color: #FFD508;
+}
+.sharename{
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 60rpx;
+  margin-top: 52rpx;
+}
+.sharename text{
+  padding: 0;
+  color: #FF5555;
+  display:inline-block;
+
+}
+.sharediv{
+  line-height: 109rpx;
+  height: 109rpx;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 54rpx;
+}
+.sharediv image{
+  width: 109rpx;
+  height: 109rpx;
+   float: left; 
+  margin-left: 60rpx;
+  margin-right: 20rpx;
+
+}
+.sharediv text{
+  color: #fff;
+   float: left; 
+  line-height: 109rpx;
+  margin-right: 20rpx;
+  font-size: 30rpx;
+}
+.promptalert{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+.promptalert  .prompt{
+  color: #fff;
+  line-height:100vh;
+  text-align: center;
+}
+/*   弹窗  */
+.molealert{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+.bottomalert{
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  height:350rpx;
+  right: 0;
+   z-index: 1000; 
+  
+
+}
+.relaytext{
+  height: 250rpx;
+  display: flex;
+  background: #fff;
+  position: relative;
+}
+.relaytext button{
+  position: absolute;
+  /* z-index:1000; */
+  opacity: 0;
+  left: 0;
+  top: 0;
+  bottom: 100rpx;
+  width:187.5rpx;
+   height: 250rpx;
+   line-height: 250rpx;
+   border: 1px solid transparent;
+   display: block;
+   color: transparent;
+}
+.relaytext .coview{
+  width: 25%;
+  text-align: center;
+}
+.relaytext cover-view{
+  font-size: 26rpx;
+  
+}
+.bottomalert cover-image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  display: block;
+  margin: auto;
+  margin-top: 60rpx;
+}
+.relayclose{
+  background: #E9E9E9;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 98rpx;
+}
+.sharebtn{
+  position: absolute;
+  width: 250rpx;
+  height: 70rpx;
+  border-radius: 10rpx;
+  left: 250rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 30rpx;
+  /* z-index: 100; */
+}
+.sharefri{
+  top: 900rpx;
+  background: #FFD400;
+}
+.playnoe{
+  background: #D0D0D0;
+  top: 1030rpx;
+}
+.sharetwxt{
+  position: absolute;
+  top: 820rpx;
+  left: 146rpx;
+  right: 0;
+  line-height: 28rpx;
+  width: 456rpx;
+
+}
+cover-image{
+  width: 100%;
+  height: 100%;
+}

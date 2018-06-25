@@ -1,11 +1,18 @@
 const SIGN = require("utils/sign.js");
 App({
+  onLaunch: function(){
+    this.getSetting( res => {
+      // console.log(this.globalData.setting)
+    })
+  },
   //登录
   login: function (fn) {
     this.globalData.openid = this.local.get("openid");
     this.globalData.oauth = this.local.get("oauth");
     this.globalData.userinfo = this.local.get("userinfo");
-    if (this.globalData.openid) fn(this.globalData);
+    if (this.globalData.openid){
+      if(fn) fn(this.globalData);
+    } 
     else wx.login({
       success: res => {
         this.https("/login", {
@@ -18,7 +25,7 @@ App({
             this.local.set("openid", res.data.openid, 86400);
             this.local.set("oauth", res.data.oauth, 86400);
             this.local.set("userinfo", res.data.info, 86400);
-            fn(this.globalData);
+            if(fn) fn(this.globalData);
           }
         });
       }
@@ -33,6 +40,21 @@ App({
     this.local.del("oauth");
     this.local.del("userinfo");
     fn(this.globalData);
+  },
+  //读取配置文件信息
+  getSetting:function(fn){
+    this.globalData.setting = this.local.get("setting");
+    if (this.globalData.setting) {
+      if (fn) fn(this.globalData);
+    }else{
+      this.https('/setting', res => {
+        if (res.status == 2000) {
+          this.globalData.setting = res.data;
+          this.local.set("setting", res.data, 86400);
+          if (fn) fn(this.globalData);
+        }
+      })
+    }
   },
   //设置用户信息
   setUserInfo: function (detail, fn) {
@@ -67,8 +89,11 @@ App({
       });
     }
   },
+  request: false,
   //HTTPS接口调用
   https: function (path, data, success, error) {
+    if (this.request) return;
+      this.request = true;
     if (typeof data == "function") {
       error = success;
       success = data;
@@ -76,10 +101,11 @@ App({
     }
     wx.request({
       method: "POST",
-      url: "https://vgame.edisonluorui.com" + path,
+      url: "https://video.edisonluorui.com" + path,
       data: SIGN(data),
       dataType: "json",
       success: res => {
+        this.request = false;
         if (res.data.status != "2000") {
           wx.hideLoading();
           wx.showToast({
@@ -92,6 +118,7 @@ App({
         else if (success) success.call(this, res.data);
       },
       fail: err => {
+        this.request = false;
         if (error) error.call(this, err);
       }
     });
@@ -123,10 +150,16 @@ App({
       wx.removeStorageSync(name);
     }
   },
+  //图片引用
+  urlimg:function(path){
+    const V = "v1.0.0";
+    return `https://video.cdn.edisonluorui.com/upload${path}?v=${V}`
+  },
   //全局变量
   globalData: {
     openid: null,
     oauth: 0,
-    userinfo: null
+    userinfo: null,
+    setting:null
   }
 });

@@ -5,13 +5,13 @@
       <image src='../../img/close.png'></image>
     </view>
     <view class='content'>
-      <view class='title'>我们的游戏好玩吗？</view>
+      <view class='title'>来说点好听的吧!</view>
       <view class='starbox'>
         <block>
           <image src='../../img/{{item}}.png' data-num="{{index}}" bindtap='selestar' wx:for="{{stars}}" wx:key="{{key}}"></image>
         </block>
       </view>
     </view>
-    <view class='btn' bindtap='clickbtn'>提交</view>
+    <view class='btn' bindtap='clickbtn'>评价一下</view>
   </view>
 </view>

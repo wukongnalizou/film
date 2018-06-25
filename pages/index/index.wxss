@@ -44,11 +44,44 @@ swiper {
   height: 541rpx;
   margin-top:69rpx;
   opacity:0.7;
+  border-radius: 10rpx;
 }
 .active{
   margin-top:0rpx;
   height: 679rpx;
   opacity:1;
+} 
+.sub{
+  position: absolute;
+  top: 90rpx;
+  right: 40rpx;
+  width: 123rpx;
+  height: 42rpx;
+  background: #8455e3;
+  line-height: 42rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  border-radius: 21rpx;
+}
+.unsub{
+  position: absolute;
+  top: 90rpx;
+  right: 40rpx;
+  width: 123rpx;
+  height: 42rpx;
+  box-sizing: border-box;
+  background: transparent;
+  line-height: 42rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #8455e3;
+  border-radius: 21rpx;
+  border: 2rpx solid #8455e3;
+}
+.activesub{
+  position: absolute;
+  top: 25rpx;
 }
 .slidetext{
   font-size: 36rpx;
@@ -85,6 +118,14 @@ swiper {
   right: 0;
   border-radius: 50%;
   background: #ff2828;
+}
+.matebox button{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;  
+  width: 100%;
+  height: 100%;
 }
 .alertcon{
   position: absolute;
@@ -160,7 +201,149 @@ swiper {
   width: 100%;
   height: 100%;
 }
+.matecon{
+  width: 660rpx;
+  height: 783rpx;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+.mateconbox{
+  width: 620rpx;
+  height: 646rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #ebebeb;
+}
+.mateleft{
+  float: left;
+  width: 180rpx;
+  height: 597rpx;
+  margin-top: 27rpx;
+  margin-left: 20rpx;
+  /* padding-right: 30rpx; */
+  border-right: 1rpx solid #ebebeb;
+}
+.typelist{
+
+}
+.typeitem{
+  position: relative;
+  padding: 20rpx 0; 
+  font-size: 26rpx;
+  color: #2e2e2e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.activename{
+  font-weight: 700;
+}
+.gamestate{
+  position: absolute;
+  top: 0;
+  right: 40rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #ff2828;
+}
+.materight{
+  float: left;
+  width: 411rpx;
+  height: 597rpx;
+  margin-top: 27rpx;
+}
 .matelist{
+  
+}
+.mateitem{
+  width: 100%;
+  overflow: hidden;
+  height: 95rpx;
+}
+.mateimg{
+  float: left;
+  width: 71rpx;
+  height: 71rpx;
+  margin-left: 40rpx;
+  border-radius: 50%;
+  text-align: center;
+  transform: translateY(12rpx);
+  background: #eee;
+}
+.mateimg image{
+  display: inline-block;
+  width: 61rpx;
+  height: 61rpx;
+  margin-top: 7rpx;
+  border-radius: 50%;
+}
+.matenamebox{
+  float: left;
+  width: 110rpx;
+  margin-top: 14rpx;
+  margin-left: 15rpx;
+}
+.matename{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 22rpx;
+  color: #2e2e2e;
+}
+.mateper{
+  font-size: 22rpx;
+  color:#FF5555; 
+}
+.matebtn{
+  float: left;
+  margin-top: 26rpx;
+  margin-left: 38rpx;
+  width: 110rpx;
+  height: 43rpx;
+  background: #FF5555;
+  line-height: 43rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  border-radius: 22rpx;
+}
+.mateconbtn{
+  width: 183rpx;
+  height: 73rpx;
+  margin: 0 auto;
+  margin-top: 32rpx;
+  line-height: 73rpx;
+  text-align: center;
+  background: #ffd400;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  color: #2E2E2E;
+}
+.nomate{
+  /* margin-top: 135rpx;  */
+  float: left;
+  width: 411rpx;
+  height: 597rpx;
+}
+.nomateimg{
+  width: 348rpx;
+  height: 260rpx;
+  margin: 0 auto;
+  margin-top: 135rpx;
+}
+.nomateimg image{
+  width: 100%;
+  height: 100%;
+}
+.nomatetitle{
+  text-align: center;
+  font-size: 24rpx;
+  color: #d2d0d0;
+}
+/* .matelist{
   width: 660rpx;
   height: 783rpx;
   margin: 0 auto;
@@ -241,7 +424,7 @@ swiper {
 }
 .matepage{
   float: left;
-  /* margin-top: 14rpx; */
+  margin-top: 14rpx;
   padding: 14rpx;
   width: 33rpx;
   height: 45rpx;
@@ -268,7 +451,7 @@ swiper {
   font-size: 30rpx;
   color: #2e2e2e;
   font-weight: 700;  
-}
+} */
 /*@keyframes bounce {
   0%, 20%{
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);

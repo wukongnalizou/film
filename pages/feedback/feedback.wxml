@@ -2,12 +2,12 @@
   <view class='feedform'>
     <view class='feedname'>QQ, 邮件或电话</view>
     <view class='feedcon'>
-      <input placeholder="选填" placeholder-style="color:#999;font-size:24rpx"></input>
+      <input type="text" value="{{contact}}" placeholder="选填" placeholder-style="color:#999;font-size:24rpx" bindinput='contactinput'></input>
     </view>
     <view class='feedname'>意见反馈</view>
     <view class='feedcon'>
-      <textarea placeholder="想要新功能？使用体验不好？在这里吐槽吧！（必填）" placeholder-style="color:#999;font-size:24rpx"></textarea>
+      <textarea placeholder="想要新功能？使用体验不好？在这里吐槽吧！（必填）"  value="{{comment}}" placeholder-style="color:#999;font-size:24rpx" bindinput='commentinput'></textarea>
     </view>
   </view>
-  <view class='feedbtn'>提交</view>
+  <view class='feedbtn' bindtap='subfeed'>提交</view>
 </view>

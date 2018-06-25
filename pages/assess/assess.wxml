@@ -1,0 +1,57 @@
+<!--pages/canvasedit/canvasedit.wxml-->
+<view class='detailbox'>
+    <canvas canvas-id="canvasedit"></canvas>
+    <view class='detail'>
+      <image src="{{gameresult.game.pic}}" class="bacurl"></image>
+      <view class="pagename">
+            <text>{{gameresult.result.title}}</text>
+      </view> 
+      <view class="score">
+          <text>{{gameresult.result_score}}</text>
+          <text class="scorepage">分</text>
+      </view>
+      <view class="analyse">
+          <text class="analysename">性格分析:</text>
+          <text>{{gameresult.result.content}}</text>
+          <view class="sharename">分享给 <text> 异性 </text>好友看看你们的契合度吧！</view>
+      </view>
+      <view class="sharediv">
+          <image src="../../img/shangchuan.png" bindtap="sharemore"></image>
+          <text>匹配好友</text>
+          <text>|</text>
+          <text>再玩一次</text>
+      </view>
+    </view>
+    <view>
+      <discuss disdata="{{gameresult.comment}}" gameid="{{gameresult.game.game_id}}" times="{{gameresult.times}}" writedis="true"></discuss>
+    </view>
+    <cover-view class="molealert" wx:if="{{condition}}">
+      <cover-view class="bottomalert" wx:if="{{condition}}"  animation='{{animationData}}'>
+          <cover-view class="relaytext">
+          <button open-type="share" plain="true">111</button>
+            <cover-view class="coview">
+                <cover-image src="../../img/weixin.png"></cover-image>
+                <cover-view>微信</cover-view>
+            </cover-view>
+            <cover-view bindtap='tap' class="coview">
+                <cover-image src="../../img/pengyouquan.png"></cover-image>
+                <cover-view>朋友圈</cover-view>
+            </cover-view>
+            <cover-view class="coview">
+                <cover-image src="../../img/type.png"></cover-image>
+                <cover-view>追爱秘籍</cover-view>
+            </cover-view>
+            <cover-view class="coview">
+                <cover-image src="../../img/touxiang.png"></cover-image>
+                <cover-view>潮人小罗</cover-view>
+            </cover-view>
+        </cover-view>
+        <cover-view class="relayclose"  bindtap="shareless">取消</cover-view>
+      </cover-view>
+    </cover-view>  
+    <cover-view class="promptalert" wx:if="{{prompt}}" bindtap="promptnone">
+      <cover-view class="prompt">
+          {{prompttitle}}
+      </cover-view>
+    </cover-view>
+</view>
