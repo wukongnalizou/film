@@ -11,12 +11,13 @@
     <!-- <view class='moneynum' wx:if="{{!free}}">(￥32)</view> -->
     <view class='intro'>{{video.desc}}</view>
     <block wx:if="{{free}}">
-      <view class='lockbox'>
+      <view class='lockbox' bindtap='play'>
         <view class='lockimg'>
           <image src='../../img/blackstart.png'></image>
         </view>
-        <view class='locktext' bindtap='play'>播放</view>
+        <view class='locktext'>播放</view>
       </view>
+      <button class='lockbtn' open-type="getUserInfo" bindgetuserinfo="getinfo" lang='zh_CN'></button>
     </block>
     <!-- <block wx:else>
       <view class='lockbox'>
@@ -28,8 +29,8 @@
       </view>
     </block> -->
     <view class='publicbox'>
-      <view class='public'>
-        <image src='../../img/logo.jpg'></image>
+      <view class='public' bindtap='toindex'>
+        <image src='../../img/indexicon.png'></image>
       </view>
     </view>
     <!-- <view class='discussbox' bindtap='showdiscuss'>
@@ -43,12 +44,6 @@
     <dialog bindcloseshare="closeshare"></dialog>
   </block> -->
    <block wx:if="{{alertdialog}}">
-    <!-- <alert alertbtn="{{alertbtn}}" bindclosealert = "closealert" bindalertbtn = "alertbtn">
-      <view class='alertcon'>
-        <view class='alertp'>分享给好友解锁</view>
-         <view class=' alertp alertnum'>(2/3)</view> 
-      </view>
-    </alert> -->
     <view class="dialogbox">
       <view class='dialog'>
         <image src='../../img/freeing.png'></image>
@@ -58,7 +53,7 @@
         <view class='alertcon'>
           <view class='alertp'>分享给好友解锁</view>
         </view>
-        <view class='btn' bindtap='clickbtn'>{{alertbtn}}</view>
+        <view class='btn' bindtap='clickbtn'>找朋友</view>
         <button class='dialogsharebtn' open-type='share'></button>
       </view>
     </view>
@@ -74,9 +69,16 @@
       <view class='cardbtn' bindtap='unlock'>解锁成功 点击继续</view>
     </view>
   </block>
+  <block wx:if="{{concern}}">
+    <concern bindcloseconcern="closeconcern"></concern>
+  </block>
    <view class='{{video.comment.length == 0 ? "nodis" : "disbox"}}'> 
+
   <!-- <scroll-view class='disbox'> -->
+
+
     <discuss disdata="{{video.comment}}" gameid="{{video.game_id}}" times="{{video.times}}"></discuss>
+
   <!-- </scroll-view> -->
    </view> 
 </view>

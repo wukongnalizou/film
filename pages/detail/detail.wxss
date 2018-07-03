@@ -55,7 +55,7 @@
   width: 670rpx;
   margin: 0 auto;
   margin-top: 50rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: #fff;
 }
 .lockbox{
@@ -63,6 +63,15 @@
   top: 600rpx;
   left: 30rpx;
   font-size: 0;
+}
+.lockbtn{
+  position: absolute;
+  top: 600rpx;
+  left: 30rpx;
+  width: 150rpx;
+  height: 65rpx;
+  z-index: 2;
+  background: transparent;
 }
 .lockimg{
   display: inline-block;
@@ -110,12 +119,12 @@
   position: fixed;
   right: 72rpx;
   bottom: 88rpx;
-  width: 96rpx;
-  height: 96rpx;
+  width: 84rpx;
+  height: 84rpx;
   text-align: center;
   font-size: 0;
   z-index: 9;
-  background: linear-gradient(#3a21c7, #ac4ba1);
+  /* background: linear-gradient(#3a21c7, #ac4ba1); */
   border-radius: 50%;
 }
 .discussbox{
@@ -141,15 +150,15 @@
   display: inline-block;
   width: 84rpx;
   height: 84rpx;
-  transform: translateY(6rpx);
+  /* transform: translateY(6rpx); */
   background: #fff;
   border-radius: 50%;
 }
 .public image{
   display: inline-block;
-  width: 76rpx;
-  height: 76rpx;
-  transform: translateY(4rpx);
+  width: 84rpx;
+  height: 84rpx;
+  /* transform: translateY(4rpx); */
   border-radius: 50%;
 }
 .alertcon{

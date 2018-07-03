@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "不眨眼",
     "usingComponents": {
       "dialog": "../../components/dialog/dialog",
       "alert": "../../components/alert/alert",

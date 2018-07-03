@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-image: url('http://video.cdn.edisonluorui.com/filmimgs/index_back.jpg');
+  background-image: url('https://vgame-cdn.edisonluorui.com/filmimgs/index_back.jpg');
   background-size: 100% 100%;
 }
 .title{
@@ -68,4 +68,21 @@
   font-size: 26rpx;
   color: #925d00;
   font-weight: 700;
+}
+canvas{
+     position: absolute;
+  left: -750rpx;  
+  top: 0; 
+   margin-left: -750rpx; 
+  bottom: 0;
+  width: 750rpx;
+  height: 100vh;   
+     /* position: absolute;
+  left:0rpx;  
+  right: 0;
+  top: 0; 
+  bottom: 0;
+  width: 750rpx;
+  height: 100vh; 
+  opacity: 0.5; */
 }

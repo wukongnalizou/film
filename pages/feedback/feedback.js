@@ -18,7 +18,7 @@ Page({
   },
   subfeed: function(){
     if (this.data.comment){
-      app.https('/contactme/usercomment', {
+      app.httpsOnce('/contactme/usercomment', {
         openid: app.globalData.openid,
         comment: this.data.comment,
         qq: this.data.contact
@@ -94,13 +94,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
   
   }
 })

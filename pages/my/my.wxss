@@ -11,6 +11,19 @@
   height: 320rpx;
   overflow: hidden;
 }
+.mytop button{
+  position: absolute;
+  font-size:24rpx;
+  text-align:center;
+  top:194rpx;
+  width: 200rpx;
+  left: 275rpx; 
+  line-height: 48rpx;
+  height: 48rpx;
+  /* background: transparent; */
+  color: #000;
+
+}
 .mytop image{
   position: absolute;
   top: 0;

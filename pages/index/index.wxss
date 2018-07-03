@@ -1,15 +1,24 @@
 .indexbox{
   width: 100vw;
-  height: 100vh;
+   height: 100vh; 
   overflow: hidden;
-  background-image: url('http://video.cdn.edisonluorui.com/filmimgs/index_back.jpg');
+  background-image: url('https://vgame-cdn.edisonluorui.com/filmimgs/index_back.jpg');
   background-size: 100% 100%;
+}
+.indexscroll{
+  width: 100vw;
+  /* height: 100vh; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 .publicaccount{
   width: 259rpx;
   height: 94rpx;
   border-radius: 54rpx;
-  margin-top: 63rpx;
+  margin-top: 63rpx; 
   margin-left: 120rpx;
 }
 .publicimg{
@@ -19,7 +28,7 @@
   background: #fff;
   border-radius: 54rpx;
   /* animation: bounce 5s infinite ,bounce 5s infinite 200ms,bounce 5s infinite 400ms,bounce 5s infinite 600ms,bounce 5s infinite 800ms; */
-  animation: bounce 5s infinite;
+  animation: bounce 4s infinite;
 }
  .publicimg image{
   display: inline-block;
@@ -29,7 +38,7 @@
 .banner-swiper {
   width: 100%;
   height: 750rpx;
-   margin-top: 57rpx; 
+  margin-top: 57rpx; 
   overflow: hidden;
 }
 swiper {
@@ -45,12 +54,13 @@ swiper {
   margin-top:69rpx;
   opacity:0.7;
   border-radius: 10rpx;
+  transition:all 300ms ease-in-out;
 }
 .active{
   margin-top:0rpx;
   height: 679rpx;
   opacity:1;
-} 
+}
 .sub{
   position: absolute;
   top: 90rpx;
@@ -63,6 +73,7 @@ swiper {
   font-size: 20rpx;
   color: #fff;
   border-radius: 21rpx;
+  transition:all 300ms ease-in-out;
 }
 .unsub{
   position: absolute;
@@ -78,6 +89,7 @@ swiper {
   color: #8455e3;
   border-radius: 21rpx;
   border: 2rpx solid #8455e3;
+  transition:all 300ms ease-in-out;
 }
 .activesub{
   position: absolute;
@@ -213,6 +225,7 @@ swiper {
   width: 620rpx;
   height: 646rpx;
   margin: 0 auto;
+  overflow: hidden;
   border-bottom: 1rpx solid #ebebeb;
 }
 .mateleft{
@@ -263,6 +276,7 @@ swiper {
   height: 95rpx;
 }
 .mateimg{
+  position: relative;
   float: left;
   width: 71rpx;
   height: 71rpx;
@@ -278,6 +292,16 @@ swiper {
   height: 61rpx;
   margin-top: 7rpx;
   border-radius: 50%;
+}
+.mateitemdot{
+  position: absolute;
+  display: inline-block;
+  width: 15rpx;
+  height: 15rpx;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #ff2828; 
 }
 .matenamebox{
   float: left;
@@ -310,17 +334,30 @@ swiper {
   color: #fff;
   border-radius: 22rpx;
 }
+.matebtnbox{
+  position: relative;
+  margin-top: 32rpx; 
+  overflow: hidden;
+  text-align: center;
+}
 .mateconbtn{
+  display: inline-block;
   width: 183rpx;
   height: 73rpx;
-  margin: 0 auto;
-  margin-top: 32rpx;
   line-height: 73rpx;
   text-align: center;
   background: #ffd400;
   border-radius: 10rpx;
   font-size: 30rpx;
   color: #2E2E2E;
+}
+.matebtnbox button{
+  position: absolute;
+  top: 0;
+  left: 238.5rpx;
+  width: 183rpx;
+  height: 73rpx;
+  background: transparent;
 }
 .nomate{
   /* margin-top: 135rpx;  */
@@ -579,4 +616,100 @@ swiper {
     transform: translate3d(0,0,0);
   }
 
+}
+ .newhandbox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: transparent;
+  overflow: hidden;  
+  width: 100vw;
+  height: 100vh;
+} 
+.newhandcircle{
+  width: 350rpx;
+  height: 350rpx;
+  border: 750rpx solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  position: absolute;
+  left: 375rpx;
+  top: 603rpx;
+  z-index: 1;
+  transform:translate(-925rpx,-925rpx);
+}
+.newhandtitle{
+  position: absolute;
+  z-index: 2;
+  top: 260rpx;
+  left: 77rpx;
+  width: 595rpx;
+  height: 55rpx;
+}
+.newhandtitle image{
+  width: 100%;
+  height: 100%;
+}
+.newhandh{
+  position: absolute;
+  z-index: 2;
+  top: 700rpx;
+  right: 221rpx;
+  width: 108rpx;
+  height: 131rpx;
+}
+.newhandh image{
+  width: 100%;
+  height: 100%;
+}
+.newswiper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  width: 100vw;
+  height: 100vh;
+}
+.newswiper swiper{
+  width: 100%;
+  height: 100%;
+}
+.newitem{
+  position: relative;
+}
+.newswiper image{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.newclose{
+  position: absolute;
+  /* background: #fff; */
+  width: 340rpx;
+  height: 100rpx;
+  padding: 10rpx;
+  bottom: 100rpx;
+  right: 200rpx;
+}
+.newhand{
+  position: absolute;
+  right: 30rpx;
+  bottom: 40rpx;
+  width: 108rpx;
+  height: 131rpx;
+  animation:handmove 2s infinite;
+}
+.newhand image{
+  width: 100%;
+  height: 100%;
+}
+@keyframes handmove{
+  from{
+    right: 30rpx;
+  }
+  to{
+    right: 270rpx;
+  }
 }

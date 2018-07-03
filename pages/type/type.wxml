@@ -26,29 +26,7 @@
             </view>
             <view class='newbox' wx:if="{{item.gvideo_new}}">新</view>
           </view>
-          <!-- <view class='typeitem'>
-            <view class='imgbox'>
-              <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528794410727&di=5198a6a81c2ae3a22d5827e1abf62c31&imgtype=0&src=http%3A%2F%2Fimages.china.cn%2Fattachement%2Fjpg%2Fsite1000%2F20160904%2Fb8aeed99a01e19362af22f.jpg'></image>
-            </view>
-            <view class='iconbox'>
-              <image src='../../img/start.png'></image>
-            </view>
-            <view class='namebox'>
-              <view class='name'>狙击真名，玩会爱情</view>
-            </view>
-          </view>
-          <view class='typeitem'>
-            <view class='imgbox'>
-              <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528794410727&di=5198a6a81c2ae3a22d5827e1abf62c31&imgtype=0&src=http%3A%2F%2Fimages.china.cn%2Fattachement%2Fjpg%2Fsite1000%2F20160904%2Fb8aeed99a01e19362af22f.jpg'></image>
-            </view>
-            <view class='iconbox'>
-              <image src='../../img/start.png'></image>
-            </view>
-            <view class='namebox'>
-              <view class='name'>狙击真名，玩会爱情</view>
-            </view>
-          </view>
-          <view class='typeitem'>
+           <!-- <view class='typeitem'>
             <view class='imgbox'>
               <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528794410727&di=5198a6a81c2ae3a22d5827e1abf62c31&imgtype=0&src=http%3A%2F%2Fimages.china.cn%2Fattachement%2Fjpg%2Fsite1000%2F20160904%2Fb8aeed99a01e19362af22f.jpg'></image>
             </view>
@@ -60,6 +38,14 @@
             </view>
           </view> -->
         </block>
+        <view class='typeitem'>
+            <view class='imgbox'>
+              <image src='../../img/type_expect.png'></image>
+            </view>
+            <view class='namebox'>
+              <view class='name'>免费订阅 每周更新</view>
+            </view> 
+        </view>
       </view>
     </view>
     <!-- <view class='types'>

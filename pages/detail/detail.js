@@ -10,6 +10,7 @@ Page({
     discuss:false,
     distext:true,
     clearsharelock:0,
+    oauth: 0,
     stars: [
       "lstargray",
       "lstargray",
@@ -19,9 +20,19 @@ Page({
     ],
     video:{},
     starnum:3,
-    disdata:[]
+    disdata:[],
+    concern:false
   },
   onLoad: function (options) {
+    if (app.globalData.oauth){
+      this.setData({
+        oauth: true
+      })
+    }else{
+      this.setData({
+        oauth: false
+      })
+    }
     wx.setNavigationBarTitle({
       title: options.name,
     })
@@ -33,8 +44,10 @@ Page({
         res.data.pic = app.urlimg(res.data.pic);
         this.setData({
           video: res.data,
-          clearsharelock: res.data.clearsharelock
+          clearsharelock: res.data.clearsharelock,
+          starnum: parseInt(res.data.score)
         })
+        this.selestar();
       }
     })
   },
@@ -58,16 +71,29 @@ Page({
       dialog:false
     })
   },
+  getinfo: function (res) {
+    let detail = res.detail;
+    if (detail.errMsg == "getUserInfo:fail auth deny") return;
+    app.setUserInfo(detail, res => {
+      this.setData({
+        oauth: app.globalData.oauth
+      })
+      this.play();
+    })
+  },
   play:function(){
-    if (this.data.clearsharelock){
-      this.setData({
-        cardstate: true
-      })
-    }else{
-      this.setData({
-        alertdialog: true
-      })
-    }
+    // if (this.data.clearsharelock){
+    //   this.setData({
+    //     cardstate: true
+    //   })
+    // }else{
+    //   this.setData({
+    //     alertdialog: true
+    //   })
+    // }
+    wx.navigateTo({
+      url: '../video/video?id=' + this.data.video.game_id + '&name=' + this.data.video.name,
+    })
   },
   closealert:function(){
     this.setData({
@@ -79,7 +105,7 @@ Page({
       cardstate: false
     })
     wx.navigateTo({
-      url: '../assess/assess?id=' + this.data.video.game_id + '&name=' + this.data.video.name,
+      url: '../video/video?id=' + this.data.video.game_id + '&name=' + this.data.video.name,
     })
   },
   showdiscuss: function () {
@@ -95,6 +121,21 @@ Page({
   write:function(){
     this.setData({
       distext: true
+    })
+  },
+  toindex: function () {
+    wx.switchTab({
+      url: '../index/index'
+    })
+  },
+  showconcern: function () {
+    this.setData({
+      concern: true
+    })
+  },
+  closeconcern: function () {
+    this.setData({
+      concern: false
     })
   },
   /**

@@ -5,7 +5,7 @@
   padding: 0 26rpx;
   box-sizing: border-box;
   overflow: hidden;
-  background-image: url('http://video.cdn.edisonluorui.com/filmimgs/feedback.png');
+  background-image: url('https://vgame-cdn.edisonluorui.com/filmimgs/index_back.jpg');
   background-size: 100% 100%;
 }
 .feedform{

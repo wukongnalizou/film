@@ -117,9 +117,14 @@
   clear: both;
 }
 .itemcon{
+  width:100%;
   margin-top: 20rpx;
   font-size: 24rpx;
   line-height: 38rpx;
+  white-space:normal;
+  height: auto;
+   /* word-wrap:break-word;  */
+   word-break:break-all; 
 }
 /* .disscon{
   width: 750rpx;

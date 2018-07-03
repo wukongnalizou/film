@@ -1,7 +1,7 @@
 scroll-view{
   width: 100vw;
   height: 100vh;
-  background-image: url('http://video.cdn.edisonluorui.com/filmimgs/index_back.jpg');
+  background-image: url('https://vgame-cdn.edisonluorui.com/filmimgs/index_back.jpg'); 
   background-size: 100% 100%;
 }
 .typebox{
@@ -78,17 +78,25 @@ scroll-view{
 }
  .typelist{
   font-size: 0;
+  width: 100%;
   margin-top: 20rpx;
-} 
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content:space-between;
+}
 .typeitem{
+  /* flex: 1; */
   position: relative;
   display: inline-block;
   margin-top: 13rpx;
+  text-align: center;
 }
-.typeitem:nth-child(2n){
+/* .typeitem:nth-child(2n){
   margin-left: 13rpx;
-}
+} */
 .imgbox{
+  display: inline-block;
   width: 342rpx;
   height: 453rpx;
   border-radius: 5rpx;
@@ -119,6 +127,7 @@ scroll-view{
   position: absolute;
   bottom:0;
   left: 0;
+  display: inline-block;
   width: 342rpx;
   height: 113rpx;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
@@ -148,4 +157,45 @@ scroll-view{
   top: 38rpx;
   right: 22rpx;
   color: #fd5454;
+}
+.newhandbox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  overflow: hidden;
+  background: transparent;  
+  width: 100vw;
+  height: 100vh;
+} 
+.newhandcircle{
+  width: 300rpx;
+  height: 300rpx;
+  border: 1300rpx solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  position: absolute;
+  left: 200rpx;
+  top: 236rpx;
+  z-index: 1;
+  transform:translate(-1450rpx,-1450rpx);
+}
+.newhandh{
+  position: absolute;
+  z-index: 2;
+  top: 360rpx;
+  left: 200rpx;
+  width: 108rpx;
+  height: 131rpx;
+}
+.newhandh image{
+  width: 100%;
+  height: 100%;
+}
+.newhandtitle{
+  position: absolute;
+  top: 560rpx;
+  left: 200rpx;
+  z-index: 2;
+  font-size: 28rpx;
+  color: #fff;
 }

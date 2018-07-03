@@ -1,33 +1,64 @@
+import io from "./utils/socket.io.js";
 const SIGN = require("utils/sign.js");
+const SOCKET = io("wss://vgame.edisonluorui.com");
 App({
-  onLaunch: function(){
-    this.getSetting( res => {
-      // console.log(this.globalData.setting)
-    })
+  onLaunch: function() {
+    SOCKET.on("connect",res => {
+      function checkOpenId() {
+        setTimeout(() => {
+          if (this.globalData.openid) SOCKET.emit("login", this.globalData.openid);
+          else checkOpenId.call(this);
+        }, 500);
+      }
+      checkOpenId.call(this);
+    });
+    SOCKET.on("login", res => {
+      if (this.globalData.page.page == "video") this.globalData.relogin = true
+      if (this.globalData.page.page == "video" && this.globalData.page.user) SOCKET.emit("timeByShare", this.globalData.page.game_id);
+    });
+    this.globalData.setting = this.local.get("setting") || null;
+  },
+  socketReconnect: function() {
+    SOCKET.emit("videoReconnect");
+    this.globalData.relogin = false;
   },
   //登录
-  login: function (fn) {
+  login: function (fn, time) {
+    time = time || 500;
     this.globalData.openid = this.local.get("openid");
     this.globalData.oauth = this.local.get("oauth");
     this.globalData.userinfo = this.local.get("userinfo");
-    if (this.globalData.openid){
-      if(fn) fn(this.globalData);
-    } 
+    this.globalData.setting = this.local.get("setting");
+    if (this.globalData.openid) {
+      if (fn) fn(this.globalData);
+    }
     else wx.login({
       success: res => {
-        this.https("/login", {
+        let requestTask = this.httpsOnce("/login", {
           code: res.code
         }, res => {
+          clearTimeout(timer);
           if (res.status == 2000) {
             this.globalData.openid = res.data.openid;
             this.globalData.oauth = res.data.oauth;
             this.globalData.userinfo = res.data.info;
+            this.globalData.setting = res.data.setting;
             this.local.set("openid", res.data.openid, 86400);
             this.local.set("oauth", res.data.oauth, 86400);
             this.local.set("userinfo", res.data.info, 86400);
-            if(fn) fn(this.globalData);
+            this.local.set("setting", res.data.setting, 86400);
+            console.log(res.data.oauth);
+            if (fn) fn(this.globalData);
           }
+        }, err => {
+          clearTimeout(timer);
         });
+        let timer = setTimeout(() => {
+          if (!requestTask) return this.request = false;
+          requestTask.abort();
+          this.request = false;
+          this.login(fn, time + 1000);
+        }, time);
       }
     });
   },
@@ -42,11 +73,11 @@ App({
     fn(this.globalData);
   },
   //读取配置文件信息
-  getSetting:function(fn){
+  getSetting: function (fn) {
     this.globalData.setting = this.local.get("setting");
     if (this.globalData.setting) {
       if (fn) fn(this.globalData);
-    }else{
+    } else {
       this.https('/setting', res => {
         if (res.status == 2000) {
           this.globalData.setting = res.data;
@@ -91,25 +122,66 @@ App({
   },
   request: false,
   //HTTPS接口调用
-  https: function (path, data, success, error) {
+  https: function (path, data, success, error, time) {
     if (this.request) return;
-      this.request = true;
+    this.request = true;
+    time = time || 1000;
     if (typeof data == "function") {
       error = success;
       success = data;
       data = {};
     }
-    wx.request({
+    let requestTask = wx.request({
       method: "POST",
-      url: "https://video.edisonluorui.com" + path,
+      url: "https://vgame.edisonluorui.com" + path,
       data: SIGN(data),
       dataType: "json",
       success: res => {
         this.request = false;
-        if (res.data.status != "2000") {
+        if (res.data.status != "2000" && res.data.status != "5010") {
           wx.hideLoading();
           wx.showToast({
-            title: res.data.msg,
+            title: "数据错误~",
+            image: "/img/notice.png",
+            duration: 2000,
+            mask: true
+          });
+        }
+        else if (success) success.call(this, res.data);
+      },
+      fail: err => {
+        this.request = false;
+        if (error) error.call(this, err);
+      },
+      complete: () => {
+        clearTimeout(timer);
+      }
+    });
+    let timer = setTimeout(() => {
+      requestTask.abort();
+      this.request = false;
+      this.https(path, data, success, error, time + 1000);
+    }, time);
+  },
+  httpsOnce: function (path, data, success, error) {
+    if (this.request) return;
+    this.request = true;
+    if (typeof data == "function") {
+      error = success;
+      success = data;
+      data = {};
+    }
+    return wx.request({
+      method: "POST",
+      url: "https://vgame.edisonluorui.com" + path,
+      data: SIGN(data),
+      dataType: "json",
+      success: res => {
+        this.request = false;
+        if (res.data.status != "2000" && res.data.status != "5010") {
+          wx.hideLoading();
+          wx.showToast({
+            title: "数据错误~",
             image: "/img/notice.png",
             duration: 2000,
             mask: true
@@ -151,15 +223,18 @@ App({
     }
   },
   //图片引用
-  urlimg:function(path){
-    const V = "v1.0.0";
-    return `https://video.cdn.edisonluorui.com/upload${path}?v=${V}`
+  urlimg: function (path) {
+    let V = this.globalData.setting ? this.globalData.setting.version : "v0.0.0";
+    return `https://vgame-cdn.edisonluorui.com/upload${path}?v=${V}`;
   },
   //全局变量
   globalData: {
     openid: null,
     oauth: 0,
     userinfo: null,
-    setting:null
+    setting: null,
+    socket:null,
+    page:{},
+    relogin:false
   }
 });

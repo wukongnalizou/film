@@ -1,8 +1,9 @@
 <view class="contactbox">
+   <canvas canvas-id="contactus"></canvas>
   <view class='title'>
     <image src='../../img/contact_title.png'></image>
   </view>
-  <view class='code'>
+  <view class='code' bindlongtap="tap">
     <image src='../../img/contact_code.png'></image>
   </view>
   <view class='detailbox'>

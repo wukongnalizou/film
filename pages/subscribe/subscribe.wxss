@@ -1,8 +1,12 @@
 .subscribebox{
   width: 100vw;
   height: 100vh;
-  background-image: url('http://video.cdn.edisonluorui.com/filmimgs/index_back.jpg');
+  background-image: url('https://vgame-cdn.edisonluorui.com/filmimgs/index_back.jpg');
   background-size: 100% 100%;
+}
+.subscroll{
+  width: 100vw;
+  height: 100vh;
 }
 .typebox{
    padding: 0 26rpx;

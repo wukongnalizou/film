@@ -1,6 +1,6 @@
 <view class="subscribebox">
   <block wx:if="{{sub.length}}">
-    <scroll-view scroll-y>
+    <scroll-view scroll-y class='subscroll'>
       <view class='typebox'>
         <view class='types'>
           <view class='typelist'>

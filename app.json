@@ -7,20 +7,21 @@
     "pages/detail/detail",
     "pages/feedback/feedback",
     "pages/fit/fit",
-    "pages/mark/mark",
     "pages/my/my",
     "pages/buy/buy",
     "pages/subscribe/subscribe",
-    "pages/assess/assess",
     "pages/writedis/writedis",
     "pages/alldis/alldis",
     "components/discuss/discuss",
-    "components/distext/distext"
+    "components/distext/distext",
+    "pages/assesscopy/assesscopy",
+    "pages/video/video",
+    "components/concernvideo/concernvideo"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#200424",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "不眨眼",
     "navigationBarTextStyle": "light",
     "backgroundColor": "#200424"
   },

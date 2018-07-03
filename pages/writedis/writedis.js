@@ -44,10 +44,16 @@ Page({
               icon: "none",
               duration: 2000
             });
+          } else if (res.status == 5010) {
+            wx.showToast({
+              title: res.msg,
+              icon: "none",
+              duration: 2000
+            });
           }
         })
       }else{
-        app.https('/comment/usergamescore', {
+        app.httpsOnce('/comment/usergamescore', {
           openid: app.globalData.openid,
           game_id: this.data.gameid,
           gamescore: this.data.starnum,
@@ -66,6 +72,12 @@ Page({
             })
             wx.showToast({
               title: res.data,
+              icon: "none",
+              duration: 2000
+            });
+          }else if(res.status == 5010){
+            wx.showToast({
+              title: res.msg,
               icon: "none",
               duration: 2000
             });

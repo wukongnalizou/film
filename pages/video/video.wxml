@@ -1,0 +1,102 @@
+<block wx:if="{{endanalyse==1}}">
+  <video wx:for="{{videos}}" wx:key="index"
+    id="video{{index}}" videoId="video{{index}}"
+    src="{{loader[index].src}}"   
+    controls="{{false}}"
+    autoplay="true"
+    objectFit="cover"
+    show-center-play-btn="false"
+    enable-progress-gesture="false"
+    class="hiding_{{hide[index]}} {{pis ? pis : rotate}}"
+    bindplay="onplaying"
+    bindended="ended"
+    bindtimeupdate="timeupdate"
+    data-i="{{index}}"
+    data-name="{{loader[index].name}}"
+    custom-cache="{{false}}"
+    action="{{action[index]}}"
+  ></video>
+
+  <!-- qew弹窗竖屏效果 -->
+  <cover-view class="qew" wx:if="{{showOption && rotate != 'landscape'}}">
+    <!-- 文字内容 -->
+    <cover-view class="option" 
+                wx:for="{{options}}" 
+                wx:key="index" 
+                data-i="{{index}}" 
+                bindtap="userChoose">
+      <cover-view class="circle"></cover-view>
+      <cover-view class="title">{{item.title}}</cover-view>
+                
+    </cover-view>
+    <!-- 底部进度条 -->
+    <!--cover-view class="duration" wx:if="{{duration!=''}}">
+      <cover-view style="animation:goRight {{duration}}ms linear both;"></cover-view>
+    </cover-view-->
+
+  </cover-view> 
+
+  
+  <!-- video页面控制ios下无法播放暂停，通过覆盖层的方式 -->
+  <!--<block wx:if='{{ ! videos.length }}'></block>-->
+  <cover-view wx:if='{{ videos.length }}'  id="controls" bindtap="controls">
+
+      <cover-image wx:if="{{ isvideostart &&  rotate != 'landscape' }}"   class="videostart" src='../../img/videostart.png' ></cover-image>
+      <cover-image wx:if="{{ isvideostart &&  rotate == 'landscape' }}"   class="videostartli" src='../../img/videostartli.png' ></cover-image>
+      
+  </cover-view>
+
+
+  <!-- video页面关注、分享 -->
+  <cover-view wx:if="{{videos.length>0}}" class="rightbottom">      
+      <cover-view id="sharevideo">
+        <!-- button中的全角空格必须保留，否则按钮无法触发事件 -->
+        <button class="sharevideobutton" open-type="share" plain="true">　</button>
+        <cover-image wx:if="{{ rotate !== 'landscape' }}" class="sharevideo" src="../../img/sharevideo.png"></cover-image>
+        <cover-image wx:else  class="sharevideo" src="../../img/sharevideorota.png"></cover-image>
+      </cover-view>
+      <cover-view id="noticevideo" bindtap='gobackindex'>
+        <!--<button class="noticeshare" bindtap='gobackindex' plain="true" style="color:white;">1</button>-->
+        <cover-image   wx:if="{{ rotate !== 'landscape' }}" class="noticevideo" src="../../img/homelin.png"></cover-image>
+        <cover-image   wx:else class="noticevideo" src="../../img/homelinrota.png"></cover-image>
+      </cover-view> 
+  </cover-view>
+
+  <!-- video页面关注、分享添加提示框 --> 
+  <cover-image wx:if="{{ sharetip && rotate != 'landscape' }}" class="sharetip" src="../../img/sharetip.png"></cover-image>
+  <cover-image wx:if="{{ sharetip && rotate == 'landscape' }}" class="sharetipli" src="../../img/sharetipli.png"></cover-image>
+
+  <!-- qew弹窗横屏效果 -->
+  <cover-view class="qewland" wx:if="{{ ( showOption && rotate == 'landscape' ) }}" style="width:{{144*options.length+58}}rpx;">
+      <cover-image 
+        wx:for="{{options}}" 
+        wx:key="index" 
+        data-i="{{index}}" 
+        bindtap="userChoose"
+        src="{{ item.image }}"
+      >
+      </cover-image>
+  </cover-view>
+
+  <!-- 显示图片效果 -->
+  <cover-image class="videoimage" hidden="{{ isvideoimage }}" src="{{ videoImage }}"></cover-image>
+
+</block>
+<block wx:elif="{{endanalyse==2}}">
+
+  <!-- ending分析 -->
+  <view class="endbox">
+    <view class="endanalyse">
+        <view class="lineone">性格分析中</view>
+        <view class="linetwo">匹配结局 计算分数</view>
+        <!-- 动图 -->
+        <image class="loadingpic" src="../../img/ending.gif"></image>
+    </view>
+  </view>
+
+</block>
+<block wx:elif="{{endanalyse==3}}">
+
+  <view class="endback"></view>
+
+</block>

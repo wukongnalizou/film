@@ -74,12 +74,12 @@
     </view>
     <view class='alldis' wx:if="{{disdata.length == 0}}">暂无评价</view>
     <view class='alldis' wx:if="{{disdata.length != 0}}" bindtap='alldis'>查看全部</view>
-    <view class='writedis' wx:if="{{writedis}}" bindtap='writedis'>
+    <!-- <view class='writedis' wx:if="{{writedis}}" bindtap='writedis'>
       <view class='writeimg'>
         <image src='../../img/writedis.png'></image>
       </view>
       <view class='writetext'>写评价</view>
-    </view> 
+    </view>  -->
     <!-- <view class='disscon'>
       <input placeholder='快来发表你的想法吧' placeholder-style="color:#999;font-size:24rpx;" bindtap='write'></input>
     </view> -->
