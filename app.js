@@ -122,26 +122,63 @@ App({
   },
   request: false,
   //HTTPS接口调用
-  https: function (path, data, success, error, time) {
-    if (this.request) return;
-    this.request = true;
-    time = time || 1000;
+  // https: function (path, data, success, error, time) {
+  //   if (this.request) return;
+  //   this.request = true;
+  //   time = time || 1000;
+  //   if (typeof data == "function") {
+  //     error = success;
+  //     success = data;
+  //     data = {};
+  //   }
+  //   let requestTask = wx.request({
+  //     method: "POST",
+  //     url: "https://vgame-test.edisonluorui.com" + path,
+  //     data: SIGN(data),
+  //     dataType: "json",
+  //     success: res => {
+  //       this.request = false;
+  //       if (res.data.status != "2000" && res.data.status != "5010") {
+  //         wx.hideLoading();
+  //         wx.showToast({
+  //           title: "数据错误~",
+  //           image: "/img/notice.png",
+  //           duration: 2000,
+  //           mask: true
+  //         });
+  //       }
+  //       else if (success) success.call(this, res.data);
+  //     },
+  //     fail: err => {
+  //       this.request = false;
+  //       if (error) error.call(this, err);
+  //     },
+  //     complete: () => {
+  //       clearTimeout(timer);
+  //     }
+  //   });
+  //   let timer = setTimeout(() => {
+  //     requestTask.abort();
+  //     this.request = false;
+  //     this.https(path, data, success, error, time + 1000);
+  //   }, time);
+  // },
+  https: function (path, data, success, error) {
     if (typeof data == "function") {
       error = success;
       success = data;
       data = {};
     }
-    let requestTask = wx.request({
+    wx.request({
       method: "POST",
       url: "https://vgame.edisonluorui.com" + path,
       data: SIGN(data),
       dataType: "json",
       success: res => {
-        this.request = false;
-        if (res.data.status != "2000" && res.data.status != "5010") {
+        if (res.data.status != "2000") {
           wx.hideLoading();
           wx.showToast({
-            title: "数据错误~",
+            title: res.data.msg,
             image: "/img/notice.png",
             duration: 2000,
             mask: true
@@ -150,18 +187,9 @@ App({
         else if (success) success.call(this, res.data);
       },
       fail: err => {
-        this.request = false;
         if (error) error.call(this, err);
-      },
-      complete: () => {
-        clearTimeout(timer);
       }
     });
-    let timer = setTimeout(() => {
-      requestTask.abort();
-      this.request = false;
-      this.https(path, data, success, error, time + 1000);
-    }, time);
   },
   httpsOnce: function (path, data, success, error) {
     if (this.request) return;
