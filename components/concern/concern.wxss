@@ -28,9 +28,9 @@
 .concern{
   position: absolute;
   top: 124rpx;
-  left: 66rpx;
-  width: 617rpx;
-  height: 693rpx
+  left: 81.5rpx;
+  width: 587rpx;
+  height: 827rpx;
 }
 .concern image{
   width: 100%;
@@ -39,10 +39,11 @@
 .close{
   position: absolute;
   right: 120rpx;
-  top: 160rpx;
-  width: 31rpx;
-  height: 31rpx;
+  width: 62rpx;
+  height: 62rpx;
   padding: 5rpx;
+  left: 344rpx;
+  top: 1000rpx;
 }
 .close image{
   width: 100%;

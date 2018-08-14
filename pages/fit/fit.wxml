@@ -1,6 +1,0 @@
-<view>
-  <canvas canvas-id="myCanvas" style='width:100vw;height:100vh'></canvas>
-  <!-- <view bindtap='tap' style="position:absolute;z-index:200" class="bordertop"></view> -->
-   <!-- ctx.drawImage("../../img/secec.png", this.setpx(190), this.setpx(920), this.setpx(430), this.setpx(100)); -->
-   <cover-image src="../../img/secec.png" style="position:absolute;left:190rpx;top:920rpx;width:430rpx;height:100rpx" bindtap="tap"></cover-image>
-</view>

@@ -27,9 +27,9 @@ Page({
       "bstarwhite",
       "bstarwhite",
       "bstarwhite",
-      "bstarwhite",
+      "bstarwhite"
     ];
-    for (let i = 0; i < parseInt(num); i++) {
+    for (let i = 0; i < Math.round(num/2); i++) {
       stars[i] = "bstaryellow"
     }
     return stars;
@@ -56,15 +56,15 @@ Page({
             "bstarwhite",
             "bstarwhite",
             "bstarwhite",
-            "bstarwhite",
+            "bstarwhite"
           ]
-          for (let i = 0; i < Math.floor(dis.score); i++) {
+          for (let i = 0; i < Math.round(dis.score/2); i++) {
             stars[i] = "bstaryellow"
           }
           dis.score = stars
         }
         let discussdata = [...this.data.discussdata, ...res.data.resgames_com];
-        console.log(discussdata)
+//      console.log(discussdata)
         this.setData({
           stars: stars,
           discussdata: discussdata,

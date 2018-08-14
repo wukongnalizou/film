@@ -19,7 +19,7 @@ Page({
     },res => {
       if(res.status == 2000){
         let sub = res.data;
-        for (let i = 0; i < sub.length; i++) {
+        for (let i = 0; i < sub.length; i++) {``
           if(sub[i].pic == 'local'){
             sub[i].pic = `../../img/${sub[i].pro_id}.jpg`
           }else{

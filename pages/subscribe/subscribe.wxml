@@ -7,7 +7,7 @@
             <block wx:for="{{sub}}" wx:key="{{key}}">
               <view class='typeitem'>
                 <view class='imgbox' bindtap='totype'>
-                  <image src='{{item.pic}}' data-id="{{item.pro_id}}" data-name='{{item.pro_name}}'></image>
+                  <image src='{{item.pic}}' data-id="{{item.pro_id}}" data-name='{{item.name}}'></image>
                 </view>
               </view>
             </block>

@@ -1,7 +1,7 @@
 <view class="concernbox">
-  <view class='clickbtn'>
+  <!-- <view class='clickbtn'>
     <image src='../../img/click.png'></image>
-  </view>
+  </view> -->
   <view class='concern'>
     <image src='../../img/concern.png'></image>
   </view>

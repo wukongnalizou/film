@@ -6,25 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // switchtab:true,
+    switchtab:true,
     videos:[],
+    videodata:{}
   },
   switchtab: function(){
     this.setData({
       switchtab:!this.data.switchtab
     })
   },
-  todetail:function(e){
-    if (e.currentTarget.dataset.state){
-      wx.navigateTo({
-        url: '../assesscopy/assesscopy?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name+'&state=1',
-      })
-    }else{
-      wx.navigateTo({
-        url: '../detail/detail?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name,
-      })
-    }
-    
+  todetail:function(){
+    let detail = this.data.videodata;
+    wx.navigateTo({
+      url: '../detail/detail?id=' + detail.id + '&name=' + detail.name + '&state=' + detail.state,
+    })
+  },
+  sendform: function (e) {
+    this.data.videodata = e.target.dataset
+    app.https('/qrcode/userformid', {
+      openid: app.globalData.openid,
+      formid: e.detail.formId
+    }, res => {
+      if (res.status == 2000) {
+        this.todetail();
+      }
+    })
   },
   tomore:function(){
     wx.navigateTo({
@@ -43,15 +49,16 @@ Page({
       pro_id: options.id
     }, res => {
       if(res.status == 2000){
-        let videos = res.data;
+        let videos = res.data.games;
         for (let i = 0; i < videos.length; i++) {
           videos[i].pic = app.urlimg(videos[i].pic);
         }
         this.setData({
-          videos: videos
+          videos: videos,
+          switchtab: res.data.subscribe_state
         })
       } 
     })
     // console.log(options.id)
-  }
+  },
 })

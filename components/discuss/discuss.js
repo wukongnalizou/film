@@ -12,9 +12,9 @@ Component({
             "bstarwhite",
             "bstarwhite",
             "bstarwhite",
-            "bstarwhite",
+            "bstarwhite"
           ]
-          for (let i = 0; i < Math.floor(dis.score);i++){
+          for (let i = 0; i < Math.round(dis.score/2);i++){
             stars[i] = "bstaryellow"
           }
           dis.score = stars

@@ -48,7 +48,7 @@ Page({
     //   })
     // }
     if (app.globalData.oauth){
-      console.log(1)
+//    console.log(1)
       this.setData({
         oauth: true,
         userinfo: app.globalData.userinfo
@@ -64,7 +64,7 @@ Page({
     if (detail.errMsg == "getUserInfo:fail auth deny") return;
     this.data.userinfo = app.globalData.userinfo;
     app.setUserInfo(detail, res => {
-      console.log(res);
+//    console.log(res);
       this.setData({
         oauth: app.globalData.oauth,
         userinfo: res

@@ -21,31 +21,46 @@ Page({
     video:{},
     starnum:3,
     disdata:[],
-    concern:false
+    concern:false,
+    watchresult:0,
+    gameid:"",
+    imgheight:"",
+    width:"",
+    height:"",
+    videoformid:"",
+    gamename:"",
+
+    detailsid:""
   },
   onLoad: function (options) {
-    if (app.globalData.oauth){
-      this.setData({
-        oauth: true
-      })
-    }else{
-      this.setData({
-        oauth: false
-      })
-    }
+    var that = this;
+    this.data.videoformid = options.formid
+    this.data.gameid = options.id;
+    this.data.gamename = options.name;
+    // if (app.globalData.oauth){
+    //   this.setData({
+    //     oauth: true
+    //   })
+    // }else{
+    //   this.setData({
+    //     oauth: false
+    //   })
+    // }
     wx.setNavigationBarTitle({
       title: options.name,
     })
     app.https('/gamevideoinfo/clickgamevideo',{
       game_id : options.id,
-      openid: app.globalData.openid
+      openid: app.globalData.openid,
+      // formid: this.data.videoformid
     },res => {
       if(res.status == 2000){
         res.data.pic = app.urlimg(res.data.pic);
         this.setData({
           video: res.data,
           clearsharelock: res.data.clearsharelock,
-          starnum: parseInt(res.data.score)
+          starnum: Math.round(res.data.score / 2),
+          watchresult: res.data.gameresult_state
         })
         this.selestar();
       }
@@ -66,6 +81,9 @@ Page({
       stars: stars
     })
   },
+  setpx: function (rpx) {
+    return rpx * (this.data.width / 750)
+  },
   closeshare:function(){
     this.setData({
       dialog:false
@@ -75,22 +93,14 @@ Page({
     let detail = res.detail;
     if (detail.errMsg == "getUserInfo:fail auth deny") return;
     app.setUserInfo(detail, res => {
-      this.setData({
-        oauth: app.globalData.oauth
-      })
-      this.play();
+        this.play();
+      // this.setData({
+      //   oauth: app.globalData.oauth
+      // })
     })
+   
   },
   play:function(){
-    // if (this.data.clearsharelock){
-    //   this.setData({
-    //     cardstate: true
-    //   })
-    // }else{
-    //   this.setData({
-    //     alertdialog: true
-    //   })
-    // }
     wx.navigateTo({
       url: '../video/video?id=' + this.data.video.game_id + '&name=' + this.data.video.name,
     })
@@ -123,6 +133,8 @@ Page({
       distext: true
     })
   },
+
+
   toindex: function () {
     wx.switchTab({
       url: '../index/index'
@@ -144,6 +156,14 @@ Page({
   onReachBottom: function () {
   
   },
+  watSubmit: function (e) {
+    wx.navigateTo({
+      url: '../canpersonresult/canpersonresult?id=' + this.data.gameid + "&formid=" + e.detail.formId +  "&name=" + this.data.gamename
+    })
+  },
+  watReset: function () {
+//  console.log('form发生了reset事件')
+  },
 
   /**
    * 用户点击右上角分享
@@ -156,18 +176,88 @@ Page({
       success: res => {
         if (res.errMsg == 'shareAppMessage:ok') {
           app.https('/gamevideoinfo/sharegamevideo', {
-            game_id: this.data.video.game_id,
             openid: app.globalData.openid
           }, res => {
             if (res.status == 2000) {
-              this.setData({
-                alertdialog: false,
-                cardstate: true
+              wx.showToast({
+                title: '分享成功',
+                icon: 'none',
+                duration: 2000
               })
+              // this.setData({
+              //   alertdialog: false,
+              //   cardstate: true
+              // })
             }
           })
         }
       }
     }
-  }
+  },
+  totextresult:function(){
+//  console.log("666");
+//  console.log(this.data.gamename);
+    wx.navigateTo({
+      url: '../canpersonresult/canpersonresult?id=' + this.data.gameid + "&name=" + this.data.gamename
+    })
+  },
+  writedis: function () {
+    wx.navigateTo({
+      url: '../writedis/writedis?id=' + this.data.video.game_id,
+    })
+  },
+  subSubmit: function (e) {
+//  console.log(e.detail.formId);
+//  console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    app.https('/subscribe/subscribeProject', {
+      open_id: app.globalData.openid,
+      state: this.data.sub,
+      formid: e.detail.formId
+    }, res => {
+      if (res.status == 2000) {
+        if (res.data.state == 0) {
+          this.setData({
+            sub: res.data.state,
+            subimg: "../../img/index_sub.png"
+          })
+        } else if (res.data.state == 1) {
+          this.setData({
+            sub: res.data.state,
+            subimg: "../../img/index_finishsub.png"
+          })
+        }
+      }
+    })
+  },
+  subReset: function () {
+    console.log('form发生了reset事件')
+  },
+  playSubmit: function (e) {
+//  console.log(e.detail.formId);
+//  console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    app.https('/subscribe/subscribeProject', {
+      open_id: app.globalData.openid,
+      state: this.data.sub,
+      formid: e.detail.formId
+    }, res => {
+      if (res.status == 2000) {
+        if (res.data.state == 0) {
+          this.setData({
+            sub: res.data.state,
+            subimg: "../../img/index_sub.png"
+          })
+        } else if (res.data.state == 1) {
+          this.setData({
+            sub: res.data.state,
+            subimg: "../../img/index_finishsub.png"
+          })
+        }
+
+
+      }
+    })
+  },
+  playReset: function () {
+//  console.log('form发生了reset事件')
+  },
 })

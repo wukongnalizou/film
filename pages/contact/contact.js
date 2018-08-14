@@ -41,9 +41,25 @@ Page({
   },
   drawcanvas:function(){
     var that = this;
-    let ctx = wx.createCanvasContext('contactus');
-    ctx.drawImage("../../img/contact_code.png", that.setpx(150), that.setpx(300), that.setpx(450), that.setpx(450));
-    ctx.draw();
+    wx.downloadFile({
+      url: 'https://vgame-cdn.edisonluorui.com/filmimgs/index_back.jpg', //仅为示例，并非真实的资源
+      success: function (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          let ctx = wx.createCanvasContext('contactus');
+          ctx.drawImage(res.tempFilePath, 0, 0, that.data.width, that.data.height);
+          ctx.drawImage("../../img/contact_code.png", that.setpx(150), that.setpx(300), that.setpx(450), that.setpx(450));
+          var pertext = "扫描二维码关注不眨眼平台"
+          ctx.setFillStyle('#fff');
+          ctx.setFontSize(that.setpx(26));
+          ctx.fillText(pertext, (that.setpx(750) - ctx.measureText(pertext).width) / 2, that.setpx(850));
+          ctx.draw();
+          
+
+        }
+      }
+    })
+    
   },
   tap: function () {
     var that = this;

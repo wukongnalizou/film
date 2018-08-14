@@ -9,7 +9,7 @@
   </view>
   
   <view class='list'>
-    <view class='item' bindtap='tosubscribe'>
+     <view class='item' bindtap='tosubscribe'>
       <view class='titleimg'>
         <image src='../../img/my_subscribe.png'></image>
       </view>
@@ -17,7 +17,7 @@
       <view class='titlearrow'>
         <image src='../../img/my_arrow.png'></image>
       </view> 
-    </view>
+    </view> 
     <!-- <view class='item' bindtap='tobuy'>
       <view class='titleimg'>
         <image src='../../img/my_buy.png'></image>
@@ -32,10 +32,13 @@
         <image src='../../img/my_contact.png'></image>
       </view>
       <view class='titlename'>联系我们</view>
-      
       <view class='titlearrow'>
         <image src='../../img/my_arrow.png'></image>
       </view>
     </view>
+  </view>
+  <view>
+      <cservice></cservice>  
+    <button open-type="contact" class="contactus" ></button>
   </view>
 </view>

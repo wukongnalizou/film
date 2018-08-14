@@ -7,8 +7,8 @@
         <image src='../../img/close.png'></image>
       </view> -->
     </view>
-    <view class='list'>
-      <view class='item' wx:for="{{discussdata}}" wx:key="{{key}}">
+    <view class='list' >
+      <view  wx:for="{{discussdata}}" wx:key="{{key}}" class="item">
         <view class='itemleft'>
           <image src='{{item.headimg}}'></image>
         </view>

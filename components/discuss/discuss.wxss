@@ -59,6 +59,9 @@
   padding: 31rpx 0 ;
   border-bottom: 1rpx solid #ededed;
 }
+.onitem{
+  margin-bottom:98rpx;
+}
 .itemleft{
   float: left;
   /* margin-top: 31rpx; */

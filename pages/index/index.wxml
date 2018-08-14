@@ -1,21 +1,33 @@
 <view class='indexbox'>
-  <!-- <block wx:if="{{newhand}}"> -->
     <scroll-view scroll-y class='indexscroll'>
-      <view class='publicaccount'>
-        <view class='publicimg' bindtap='showconcern'>
-          <image src='../../img/index_public.png'></image>
-        </view>
+      <view class='publicaccount' >
+         <block wx:if="{{collect}}">
+          <view class='publicimg' bindtap='showconcern'>
+            <image src='../../img/collect.png'></image>
+          </view>
+        </block>
       </view>
       <view class='banner-swiper'>
         <swiper circular="{{circular}}" class='swiperbox' previous-margin="{{previousmargin}}" next-margin="{{nextmargin}}" autoplay="{{autoplay}}" current='{{swiperCurrent}}' interval="5000" bindchange="swiperChange">
           <block wx:for="{{banners}}" wx:key="key">
             <swiper-item class="bannerbox">
-              <image src='{{item.pic}}' class="slideimg{{index == swiperCurrent ? ' active' : ''}}" data-id="{{index}}" id="{{item.id}}" data-name="{{item.name}}"  bindtap="totype"></image>
-              <view class="sub{{index == swiperCurrent ? ' activesub' : ''}}" style='color:{{item.subscribe_style.sub.color}};background:{{item.subscribe_style.sub.bgcolor}}'  hidden="{{item.subscribe_state}}" bindtap='subscribe' data-id="{{item.id}}" data-state="{{item.subscribe_state}}" data-index="{{index}}">免费订阅</view> 
-              <view class="unsub{{index == swiperCurrent ? ' activesub' : ''}}" style='color:{{item.subscribe_style.unsub.color}};border: 2rpx solid {{item.subscribe_style.sub.bordercolor}}' hidden="{{!item.subscribe_state}}" bindtap='subscribe' data-id="{{item.id}}" data-state="{{item.subscribe_state}}"  data-index="{{index}}">已订阅</view> 
-              <view class='slidetext' style="color:{{item.subscribe_style.sub.bgcolor}};">{{item.name}}</view>
+            <view class="slideimg{{index == swiperCurrent ? ' active' : ''}}">
+              <image src='{{item.pic}}' data-id="{{index}}" id="{{item.id}}" data-name="{{item.name}}" data-result="{{item.gameresult_state}}" bindtap='totype'></image>
+              <view class='bannerbottom'>
+                <view class='bscore'>{{item.score}}</view>
+                <view class='bright'>
+                  <view class='bruser'>{{item.subuser}}</view>
+                  <view class='brsub' data-state="{{item.subscribe_state}}" data-index="{{index}}" data-id="{{item.id}}" wx:if="{{!item.subscribe_state}}" style='background:{{item.subscribe_style.sub.bgcolor}}'>
+                    <form bindsubmit="sendform" report-submit="ture" data-state="{{item.subscribe_state}}" data-index="{{index}}" data-id="{{item.id}}"><button formType="submit" class="formbtn"></button></form>
+                    +订阅
+                  </view> 
+                  <view class='brsub' data-state="{{item.subscribe_state}}" data-index="{{index}}" data-id="{{item.id}}" bindtap='cancelsubscribe' wx:else>已订阅</view> 
+                </view>
+              </view>
+              </view>
+              <view class='slidetext' style="color:#fff;">{{item.name}}<text wx:if="{{item.project_new}}">NEW</text></view>
             </swiper-item>
-          </block>  
+          </block>
         </swiper>
       </view>
       <view class='matebox'  bindtap='showmate'>
@@ -32,9 +44,6 @@
           <view class='matetop'>
             <image src='../../img/mateback.png'></image>
             <view class='matetitle'>匹配记录</view>
-            <view class='closemate' bindtap='closemate'>
-              <image src='../../img/close.png'></image>
-            </view>
           </view>
           <view class='matecon'>
             <view class='mateconbox'>
@@ -74,6 +83,9 @@
             </view>
             <!-- <view class='mateconbtn'>邀请好友</view> -->
             <!-- <view class=></view> -->
+          </view>
+          <view class='closemate' bindtap='closemate'>
+            <image src='../../img/close.png'></image>
           </view>
           <!-- <view class='matelist'>
             <view class='mateitem'>
@@ -121,37 +133,14 @@
           </view> -->
         </view>
       </block>
-      <!-- <block wx:if="{{!newhand}}">
-        <view class='newhandbox'>
-          <view class='newhandtitle'>
-            <image src='../../img/new_title.png'></image>
-          </view>
-          <view class='newhandcircle' bindtap='newtype'></view>
-          <view class='newhandh'>
-            <image src='../../img/new_hand.png'></image>
-          </view>
-        </view>
-      </block>  -->
-      <!-- <discuss></discuss> -->
-      <!-- <score></score> -->
-      <!-- <dialog></dialog> -->
-      <!-- <block>
-        <alert alertbtn="{{alertbtn}}">
-          <view class='alertcon'>
-            <view class='alertp'>分享给<text>3个</text>不同的好友或群</view>
-            <view class=' alertp alertnum'>(2/3)</view>
-          </view>
-        </alert>
-      </block> -->
     </scroll-view>
-  <!-- </block> -->
-   <block wx:if="{{!newhand}}"> 
+   <!-- <block wx:if="{{newhand}}"> 
     <view class='newswiper'>
       <swiper indicator-dots="true" current='{{newCurrent}}' bindchange='newchange' indicator-color="#ccc" autoplay="{{false}}" interval="5000">
         <block wx:for="{{newswiper}}" wx:key="{{key}}">
           <swiper-item class="newitem">
             <image src="{{item}}" class="slide-image" width="355" height="150"/>
-            <view class='newhand' wx:if="{{newCurrent != 2}}">
+            <view class='newhand' wx:if="{{newCurrent == 0}}">
               <image class='newhand' src='../../img/new_hand.png'></image>
             </view>
           </swiper-item>
@@ -159,5 +148,43 @@
       </swiper>
       <view class='newclose' wx:if="{{newCurrent == 2}}" bindtap='newstate'></view>
     </view>
-   </block> 
+   </block>  -->
+    <!-- <block wx:if="{{!newhand}}"> 
+      <view class='newswiper' bindtap="tovideo" data-result="1" data-name="美丽的邂逅" data-id="0">
+        <image src="../../img/new01.png"></image>
+      </view>
+      <view class="circle" bindtap="tovideo">
+      <image src="../../img/new_hand.png" class="newpointer"></image>
+      </view> 
+    </block> -->
+    <block wx:if="{{cancelsub}}">
+      <view class='cancelsubbox'>
+        <view class='cancelsub'>
+          <view class='cancelsubcon'>
+            <view class='cancelintro'>取消后将无法收到游戏更新提醒哦</view>
+            <view class='cancelcon'>真的要取消吗</view>
+          </view>
+          <view class='cancelbtngroup'>
+            <view class='cancelbtn' bindtap='confirmcancel'>确认取消</view>
+            <view class='cancelbtn' style='color:#10C840' bindtap='closecancel'>我再想想</view>
+          </view>
+        </view>
+      </view>  
+    </block>
+    <block wx:if="{{subalert}}">
+      <view class='subalertbox'>
+        <view class='subalert'>
+          <view class='subalerttop'>
+            <image src='../../img/index_sub.png'></image>
+          </view>
+          <view class='subalertcon'>
+            <view class='subalerttext'>订阅后将收到</view>
+            <view class='subalerttext'>我们的游戏更新提醒哦</view>
+          </view>
+          <view class='subalertclose' bindtap='closesub'>
+            <image src='../../img/close.png'></image>
+          </view>
+        </view>
+      </view> 
+    </block>
 </view>

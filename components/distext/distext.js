@@ -25,7 +25,7 @@ Page({
     for (let i = 0; i <= e.target.dataset.num; i++) {
       stars[i] = "bstaryellow"
     }
-    console.log(e.target.dataset.num + 1)
+//  console.log(e.target.dataset.num + 1)
     this.setData({
       stars: stars,
       starnum: e.target.dataset.num + 1

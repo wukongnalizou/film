@@ -6,11 +6,15 @@
   background-size: 100% 100%;
 }
 .bgimg{
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-size: 100% 100%;
-  z-index: -1;
+  position:absolute;
+  background-size:cover;
+  z-index:-1;
+  left:0;
+  right:0;
+  top:0;
+  height:954rpx;
+  width:100%;
+
 }
 .detail{
   width: 100%;
@@ -63,30 +67,42 @@
   top: 600rpx;
   left: 30rpx;
   font-size: 0;
+  right: 30rpx;
+  height: 90rpx;
+}
+.playbox{
+  display: inline-block;
+  position: relative;
 }
 .lockbtn{
-  position: absolute;
-  top: 600rpx;
-  left: 30rpx;
-  width: 150rpx;
-  height: 65rpx;
-  z-index: 2;
+  position: absolute; 
+  top: 0rpx;
+  left: 0rpx; 
+  width: 170rpx;
+  height:90rpx; 
+  z-index: 1000;
   background: transparent;
+}
+.lockbtn::after{
+  border: none;
 }
 .lockimg{
   display: inline-block;
-  width: 65rpx;
-  height: 65rpx;
-  line-height: 65rpx;
+  width: 90rpx;
+  height: 90rpx;
+  line-height: 90rpx;
   text-align: center;
   background: #fff;
   border-radius: 50%;
 }
 .lockimg image{
   display: inline-block;
-  width: 23rpx;
-  height: 32rpx;
-   transform: translateY(16.5rpx); 
+  width: 26rpx;
+  height: 43rpx;
+  transform: translateY(23.5rpx);  
+  margin-left:10rpx;
+
+
 }
 .locktext{
   display: inline-block;
@@ -118,12 +134,12 @@
 .publicbox{
   position: fixed;
   right: 72rpx;
-  bottom: 88rpx;
+  bottom: 98rpx;
   width: 84rpx;
   height: 84rpx;
   text-align: center;
   font-size: 0;
-  z-index: 9;
+  z-index: 100;
   /* background: linear-gradient(#3a21c7, #ac4ba1); */
   border-radius: 50%;
 }
@@ -246,13 +262,22 @@
   background: #fff;
 } 
 .nodis{
-  position: absolute;
+  /* position: absolute;
   width: 100%;
-  /* height:600rpx;  */
-  bottom: 0; 
-  /* top: 900rpx; */
+   top: 954rpx; 
   left: 0;
-  background: #fff;
+  background: #fff; */
+  position:absolute;
+width:100%;
+top:954rpx;
+left:0;
+background:#fff;
+
+  
+}
+.commentbot{
+  padding-bottom:98rpx;
+
 }
 .dialogbox{
   position: fixed;
@@ -315,4 +340,75 @@
   width: 254rpx;
   height: 65rpx;
   background: transparent;
+}
+
+/*查看结果  */
+.watchresult{
+  width: 165rpx;
+  height: 65rpx;
+  line-height: 65rpx;
+  border-radius:33rpx;
+  font-size: 26rpx;
+  background: #FFD508;
+  text-align: center;
+  float: right;
+  margin-top: 12.5rpx;
+}
+.writedis{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background: #fff;
+  text-align: center;
+}
+.writeimg{
+  /* display: inline-block; */
+  float: left;
+  width: 37rpx;
+  height: 37rpx;
+  line-height: initial;
+  margin-top: 30.5rpx;
+  padding-left: 300rpx;
+}
+.writeimg cover-image{
+  width: 100%;
+  height: 100%;
+  /* transform: translateY(6rpx); */
+  vertical-align:middle;
+
+}
+.writetext {
+  /* display: inline-block; */
+   float: left;
+  margin-left: 12rpx;
+  font-size: 26rpx;
+  color: #000;
+  font-weight: 700;
+  line-height: 98rpx;
+  width: 100rpx;
+}
+.bacfff{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top:954rpx;
+  bottom: 0;
+  background: #fafafa;
+}
+.watbtn{
+  position: absolute;
+  top: 0;
+  height:90rpx;
+  width: 165rpx;
+  line-height:65rpx;
+  border-radius:33rpx;
+  right: 0;
+  background: transparent;
+}
+
+.watbtn::after{
+border:none;
 }

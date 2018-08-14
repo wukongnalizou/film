@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "discuss": "../../components/discuss/discuss",
-    "concern": "../../components/concern/concern"
-  }
-}

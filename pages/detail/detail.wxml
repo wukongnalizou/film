@@ -11,13 +11,19 @@
     <!-- <view class='moneynum' wx:if="{{!free}}">(￥32)</view> -->
     <view class='intro'>{{video.desc}}</view>
     <block wx:if="{{free}}">
-      <view class='lockbox' bindtap='play'>
-        <view class='lockimg'>
-          <image src='../../img/blackstart.png'></image>
+      <view class='lockbox'>
+        <view class='playbox'>
+          <view class='lockimg' >
+            <image src='../../img/blackstart.png'></image>
+          </view>
+          <view class='locktext'>播放</view>
+          <button class='lockbtn' open-type="getUserInfo" bindgetuserinfo="getinfo" lang='zh_CN' ></button>
         </view>
-        <view class='locktext'>播放</view>
-      </view>
-      <button class='lockbtn' open-type="getUserInfo" bindgetuserinfo="getinfo" lang='zh_CN'></button>
+        <form bindsubmit="watSubmit" bindreset="watReset" report-submit="ture" data-id="{{gameid}}" data-name="{{gamename}}" wx:if="{{watchresult}}">
+          <view class="watchresult" >查看结果</view>
+          <button formType="submit" class="typebtn" class="watbtn"></button>
+        </form> 
+      </view> 
     </block>
     <!-- <block wx:else>
       <view class='lockbox'>
@@ -30,7 +36,7 @@
     </block> -->
     <view class='publicbox'>
       <view class='public' bindtap='toindex'>
-        <image src='../../img/indexicon.png'></image>
+        <image src='../../img/homelin.png'></image>
       </view>
     </view>
     <!-- <view class='discussbox' bindtap='showdiscuss'>
@@ -43,7 +49,7 @@
   <!-- <block wx:if="{{dialog}}">
     <dialog bindcloseshare="closeshare"></dialog>
   </block> -->
-   <block wx:if="{{alertdialog}}">
+   <!-- <block wx:if="{{alertdialog}}">
     <view class="dialogbox">
       <view class='dialog'>
         <image src='../../img/freeing.png'></image>
@@ -57,8 +63,8 @@
         <button class='dialogsharebtn' open-type='share'></button>
       </view>
     </view>
-  </block> 
-  <block wx:if="{{cardstate}}">
+  </block>  -->
+  <!-- <block wx:if="{{cardstate}}">
     <view class='cardbox'>
       <view class='cardback'>
         <image src='../../img/cardback.png'></image>
@@ -68,17 +74,22 @@
       </view>
       <view class='cardbtn' bindtap='unlock'>解锁成功 点击继续</view>
     </view>
-  </block>
+  </block> -->
   <block wx:if="{{concern}}">
     <concern bindcloseconcern="closeconcern"></concern>
   </block>
-   <view class='{{video.comment.length == 0 ? "nodis" : "disbox"}}'> 
+   <!-- <view class='{{video.comment.length == 0 ? "nodis" : "disbox"}}{{watchresult == 1 ? " commentbot" : " commenttap"}}'>  -->
 
   <!-- <scroll-view class='disbox'> -->
-
-
-    <discuss disdata="{{video.comment}}" gameid="{{video.game_id}}" times="{{video.times}}"></discuss>
+  <view class="bacfff"></view>
+  <view class='nodis{{watchresult == 1 ? " commentbot" : " commenttap"}}'> 
+    <discuss disdata="{{video.comment}}" gameid="{{video.game_id}}" times="{{video.times}}" ></discuss>
 
   <!-- </scroll-view> -->
    </view> 
+   <cover-view class='writedis' bindtap='writedis'  wx:if="{{watchresult}}">
+      <cover-view class='writeimg'>
+        <cover-image src='../../img/writedis.png'></cover-image>
+      </cover-view><cover-view class='writetext'>写评价</cover-view>
+  </cover-view>
 </view>

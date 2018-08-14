@@ -8,9 +8,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.1",
+	"libVersion": "2.2.2",
 	"appid": "wx578f79064bf7b7ee",
-	"projectname": "%E6%9C%80%E7%BB%88",
+	"projectname": "%E7%AC%AC%E4%B8%89%E6%9C%9F",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -21,13 +21,25 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "开发版二维码",
+					"pathName": "pages/index/index",
+					"query": "scene=123",
+					"scene": "1047"
+				}
+			]
 		}
 	}
 }

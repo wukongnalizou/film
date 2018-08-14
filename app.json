@@ -6,7 +6,6 @@
     "pages/typemore/typemore",
     "pages/detail/detail",
     "pages/feedback/feedback",
-    "pages/fit/fit",
     "pages/my/my",
     "pages/buy/buy",
     "pages/subscribe/subscribe",
@@ -14,21 +13,25 @@
     "pages/alldis/alldis",
     "components/discuss/discuss",
     "components/distext/distext",
-    "pages/assesscopy/assesscopy",
     "pages/video/video",
-    "components/concernvideo/concernvideo"
+    "components/concernvideo/concernvideo",
+    "components/cservice/cservice",
+    "pages/canpersonresult/canpersonresult",
+    "pages/cancouperesult/cancouperesult",
+    "pages/newhand/newhand",
+    "pages/service/service"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#200424",
+    "navigationBarBackgroundColor": "#1C0630",
     "navigationBarTitleText": "不眨眼",
     "navigationBarTextStyle": "light",
-    "backgroundColor": "#200424"
+    "backgroundColor": "#1C0630"
   },
   "tabBar": {
     "color": "#fff",
     "selectedColor": "#FFD400",
-    "backgroundColor": "#1D0831",
+    "backgroundColor": "#1C0630",
     "list": [
       {
         "pagePath": "pages/index/index",

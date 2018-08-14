@@ -18,7 +18,7 @@ Page({
   },
   subfeed: function(){
     if (this.data.comment){
-      app.httpsOnce('/contactme/usercomment', {
+      app.https('/contactme/usercomment', {
         openid: app.globalData.openid,
         comment: this.data.comment,
         qq: this.data.contact

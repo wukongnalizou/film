@@ -20,7 +20,7 @@
                   <view class='topname'>{{item.nick}}</view>
                   <view class='topstar'>
                     <block>
-                      <image src='../../img/{{star}}.png' data-num="{{index}}" bindtap='selestar' wx:for="{{item.score}}" wx:for-item="star" wx:key="{{key}}"></image>
+                      <image src='../../img/{{star}}.png' data-num="{{index}}" wx:for="{{item.score}}" wx:for-item="star" wx:key="{{key}}"></image>
                     </block>
                   </view>
                 </view>
