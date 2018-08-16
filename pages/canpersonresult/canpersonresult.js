@@ -484,6 +484,11 @@ Page({
       url: '../video/video?id=' + this.data.gameid + '&name=' + this.data.gamename,
     })
   },
+  writedis: function () {
+    wx.navigateTo({
+      url: '../writedis/writedis?id=' + this.data.gameid,
+    })
+  },
   // 分享配图
   onShareAppMessage: function () {
     return {

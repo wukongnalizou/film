@@ -450,19 +450,21 @@ Page({
         this.issharetip = !this.issharetip;
       }
 
-      if (config.choose.duration != 0) {
+      if (config.choose.duration != 0 ) {
         if (currentTime >= config.choose.at && this.onchoosing[i] == 0) {
           let optionNum = config.choose.option.length;
           this.setData({
             optionNum: optionNum
           });
           counttip++;
+          console.log(this.data.duration);
           this.setData({
             showOption: true,
             duration: (config.choose.duration)
           });
+          console.log(this.data.duration);
           var parseduration = parseInt(config.choose.duration);
-          if (parseInt(config.choose.duration) < 6) {
+          if (parseInt(config.choose.duration) < 6 && parseInt(config.choose.duration) > 0) {
             this.setData({
               durationurl: "../../img/durationurl" + parseInt(config.choose.duration) + ".png"
             })
@@ -471,13 +473,17 @@ Page({
           console.log(!config.choose.score);
           if (!config.choose.score) {
             let duration = (config.choose.duration);
+            this.setData({
+              duration: duration
+            })
+            if (duration > 0) {
             timer = setInterval(() => {
               let middle = duration - 1;
               duration = middle;
               this.setData({
                 duration: middle
               })
-              if (middle < 6) {
+              if (middle < 6 && middle > 0) {
                 this.setData({
                   durationurl: "../../img/durationurl" + parseInt(middle) + ".png"
                 })
@@ -489,6 +495,7 @@ Page({
                 });
               }
             }, 1000);
+            }
           }
           this.onchoosing[i] = 1;
         }
@@ -499,6 +506,10 @@ Page({
             this.onchoosing[i] = 2;
           }
         }
+        if (duration - currentTime <= 2 && !this.onended[i]) {
+          this.ended(e);
+        }
+      }else{
         if (duration - currentTime <= 2 && !this.onended[i]) {
           this.ended(e);
         }

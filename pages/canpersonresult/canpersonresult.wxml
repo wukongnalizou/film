@@ -48,12 +48,18 @@
       <cover-image src='../../img/homelin.png'></cover-image>
     </cover-view>
   </cover-view>
-  <cover-view class="endalert"  wx:if="{{endresult}}">
+  <view class='writedis' bindtap='writedis'>
+    <view class='writeimg'>
+      <image src='../../img/writedis.png'></image>
+    </view>
+    <view class='writetext'>写评价</view>
+  </view>
+  <cover-view class="endalert" wx:if="{{endresult}}">
     <cover-view class="endanalyse">
-          <!-- <cover-image class="loadingleft" src="../../img/endany.png" ></cover-image> -->
-        <!-- 动图 -->
-        <cover-image class="loadingpic" src="../../img/loading.gif"></cover-image>
-   </cover-view>
+      <!-- <cover-image class="loadingleft" src="../../img/endany.png" ></cover-image> -->
+      <!-- 动图 -->
+      <cover-image class="loadingpic" src="../../img/loading.gif"></cover-image>
+    </cover-view>
   </cover-view>
 
 </view>

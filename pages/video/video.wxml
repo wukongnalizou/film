@@ -93,7 +93,7 @@
       <!-- 动图 -->
       <image class="loadingpic" src="../../img/ending.gif"></image>
       <view class="progressbarline">
-        <cover-view class='fill' style="width:{{count}}%"></cover-view>
+        <view class='fill' style="width:{{count}}%"></view>
       </view>
     </view>
 
@@ -101,9 +101,9 @@
       <image class="loadingleftli" src="../../img/endanyli.png"></image>
       <!-- 动图 -->
       <image class="loadingpicli" src="../../img/endingli.gif"></image>
-      <cover-view class="progressbarshu">
-        <cover-view class='fill' style="height:{{count}}%"></cover-view>
-      </cover-view>
+      <view class="progressbarshu">
+        <view class='fill' style="height:{{count}}%"></view>
+      </view>
     </view>
   </view>
 </block>
